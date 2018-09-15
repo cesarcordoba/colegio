@@ -19,12 +19,15 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 900px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-    
+
     this.navLinks = [
       { path: '/admin', label: 'Inicio', icon : 'home'},
-      { path: '/admin/proyectos', label: 'Proyectos', icon : 'work'},
-      { path: '/admin/areas', label: 'Areas', icon : 'folder' },
-      { path: '/admin/programas', label: 'Programas', icon : 'folder' }
+      { path: '/admin/noticias', label: 'Noticias', icon : 'work'},
+      { path: '/admin/imagenes', label: 'Imagenes', icon : 'work'},
+      { path: '/admin/miembros', label: 'Miembros', icon : 'work'},
+      { path: '/admin/eventos', label: 'Evento', icon : 'work'},
+      { path: '/admin/categorias', label: 'Categorias', icon : 'work'},
+      { path: '/admin/tags', label: 'Tags', icon : 'work'}
       ];
   }
   ngOnDestroy(): void {
@@ -34,7 +37,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   salir(){
     this.us.salir()
   }
-  
+
   ngOnInit() {
     this.us.obtenerUsuario().subscribe(user => this.usuario = user)
   }

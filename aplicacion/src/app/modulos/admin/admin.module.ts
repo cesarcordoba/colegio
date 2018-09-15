@@ -8,6 +8,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { AdminComponent } from './admin.component';
 import { HomeComponent } from './home/home.component';
+import { NoticiasComponent } from './noticias/noticias.component';
+import { NoticiaComponent } from './noticias/noticia/noticia.component';
 import { ConfirmDelDialogComponent } from './fragments/confirm-del-dialog/confirm-del-dialog.component'
 import { AnadirProyectoDialog } from './fragments/anadir-proyecto-dialog/anadir-proyecto-dialog.component';
 
@@ -38,7 +40,9 @@ import { ExtrasModule } from '../../extras/extras.module';
     HomeComponent,
     ConfirmDelDialogComponent,
     AnadirProyectoDialog,
+    NoticiasComponent,
+    NoticiaComponent
   ]
-  
+
 })
 export class AdminModule { }

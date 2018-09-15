@@ -13,16 +13,28 @@ var Sequelize = require('sequelize');
 //     }
 // });
 //mysql://b90f59b79213d1:ee0cafe6@us-cdbr-iron-east-04.cleardb.net/heroku_10a170faf22acd3?reconnect=true
-var sequelize = new Sequelize('heroku_10a170faf22acd3', 'b90f59b79213d1', 'ee0cafe6', {
-    host: 'us-cdbr-iron-east-04.cleardb.net',
-    dialect: 'mysql',
-    port: '3306',
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
+var sequelize = new Sequelize('colegio', 'root', '1234', {
+     host: '127.0.0.1',
+     dialect: 'mysql',
+     port: '3306',
+     operatorsAliases: true,
+     pool: {
+         max: 5,
+         min: 0,
+         idle: 200000,
+         acquire: 200000
     }
-});
+ })
+// var sequelize = new Sequelize('heroku_10a170faf22acd3', 'b90f59b79213d1', 'ee0cafe6', {
+//     host: 'us-cdbr-iron-east-04.cleardb.net',
+//     dialect: 'mysql',
+//     port: '3306',
+//     pool: {
+//         max: 5,
+//         min: 0,
+//         idle: 10000
+//     }
+// });
 /* var sequelize = new Sequelize('icoaching', 'root', '1234', {
     host: 'localhost',
     dialect: 'mysql',
@@ -34,9 +46,9 @@ var sequelize = new Sequelize('heroku_10a170faf22acd3', 'b90f59b79213d1', 'ee0ca
     }
 }); */
 
-sequelize.sync()
-.then(() =>  console.log('Connecion realizada'))
-.catch(err =>  console.log('No se puede conectar a la bd:', err))
+// sequelize.sync()
+// .then(() =>  console.log('Connecion realizada'))
+// .catch(err =>  console.log('No se puede conectar a la bd:', err))
 
 module.exports.Sequelize = Sequelize;
 module.exports.sequelize = sequelize;

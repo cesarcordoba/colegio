@@ -17,8 +17,35 @@ llave.belongsTo(usuario, {as: 'Usuario', foreignKey: 'id_usuario'});
 llave.hasOne(avatar, {as: 'Avatar', foreignKey: 'social_key'});
 avatar.belongsTo(llave , {as: 'SocialKey', foreignKey: 'social_key'});
 
-noticia.belongsToMany(tags, {as: 'Tags', through: 'noticias-tags' , foreignKey: 'IdNoticia'})
-tags.belongsToMany(noticia, {as: 'Noticias', through: 'noticias-tags' , foreignKey: 'IdTag'})
+noticia.belongsToMany(tag, {as: 'Tags', through: 'noticias-tags' , foreignKey: 'IdNoticia'})
+tag.belongsToMany(noticia, {as: 'Noticias', through: 'noticias-tags' , foreignKey: 'IdTag'})
+
+imagen.belongsTo(noticia, { as : 'Noticias', foreignKey:'IdNoticia'});
+noticia.hasMany(imagen, { as : 'Imagenes', foreignKey:'IdNoticia'});
+
+portada.belongsTo(noticia, { as : 'Noticias', foreignKey:'IdNoticia'});
+noticia.hasOne(portada, { as : 'Portada', foreignKey:'IdNoticia'});
+
+noticia.belongsTo(categoria, { as : 'Categorias', foreignKey:'IdCategoria'});
+categoria.hasMany(noticia, { as : 'Noticias', foreignKey:'IdCategoria'});
+
+categoria.hasMany(categoria, { as : 'Subcategorias', foreignKey:'IdCategoria'});
+categoria.belongsTo(categoria, { as : 'Categoria', foreignKey:'IdCategoria'});
+
+categoria.belongsToMany(evento, {as: 'Eventos', through: 'categorias-eventos' , foreignKey: 'IdCategoria'})
+evento.belongsToMany(categoria, {as: 'Categorias', through: 'categorias-eventos' , foreignKey: 'IdEvento'})
+
+categoria.belongsToMany(miembro, {as: 'Miembros', through: 'categorias-miembros' , foreignKey: 'IdCategoria'})
+miembro.belongsToMany(categoria, {as: 'Categorias', through: 'categorias-miembros' , foreignKey: 'IdMiembro'})
+
+imagen.belongsTo(evento, { as : 'Eventos', foreignKey:'IdEvento'});
+evento.hasMany(imagen, { as : 'Imagenes', foreignKey:'IdEvento'});
+
+portada.belongsTo(evento, { as : 'Eventos', foreignKey:'IdEvento'});
+evento.hasOne(portada, { as : 'Portada', foreignKey:'IdEvento'});
+
+evento.belongsToMany(miembro, {as: 'Miembros', through: 'eventos-miembros' , foreignKey: 'IdEvento'})
+miembro.belongsToMany(evento, {as: 'Eventos', through: 'eventos-miembros' , foreignKey: 'IdMiembro'})
 
 
 module.exports.noticia = noticia;

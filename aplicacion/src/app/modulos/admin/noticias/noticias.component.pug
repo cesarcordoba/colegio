@@ -1,0 +1,5 @@
+ul
+    li(*ngFor ="let noticia of noticias")
+        p {{noticia.id}}
+        p {{noticia.nombre}}
+        button(mat-button (click) = "verNoticia(noticia.id)") Ver noticia

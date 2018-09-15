@@ -15,8 +15,6 @@ import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 
 import { HomeComponent } from './home/home.component';
-import { ImagenComponent } from './partials/imagen/imagen.component';
-import { ReservaComponent } from './partials/reserva/reserva.component';
 import { LoginComponent } from './login/login.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
@@ -39,8 +37,6 @@ import { UsuarioComponent } from './usuario/usuario.component';
 	declarations: [
 		MainComponent,
 		HomeComponent,
-		ImagenComponent,
-		ReservaComponent,
 		LoginComponent,
 		UsuarioComponent
 	],
