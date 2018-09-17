@@ -8,24 +8,23 @@ import * as axios from 'axios'
 export class ImagenService {
     private static apiUrl: string = APILOCAL.url;
 
-    public static obtenerImagen(idImagen) {
-        return axios.default.get(this.apiUrl + '/data/imagen/' + idImagen);
+    static obtener(){
+        return axios.get(this.apiUrl + '/data/imagen' );
     }
 
-    public static obtenerImagenes() {
-        return axios.default.get(this.apiUrl + '/data/imagen/');
+    static one(id: number){
+        return axios.get(this.apiUrl + '/data/imagen/' + id);
     }
 
-    public static crearImagen(imagen) {
-        return axios.default.post(this.apiUrl + '/data/imagen/', imagen);
+    static crear(imagen){
+        return axios.post(this.apiUrl + '/data/imagen', imagen);
     }
 
-    public static actualizarImagen(imagen) {
-        return axios.default.put(this.apiUrl + '/data/imagen/' + imagen.id, imagen);
+    static editar(imagen){
+        return axios.put(this.apiUrl + '/data/imagen/' + imagen.id, imagen);
     }
 
-    public static eleiminarImagen(idImagen) {
-        return axios.default.delete(this.apiUrl + '/data/imagen/' + idImagen);
+    static eliminar(id: number){
+        return axios.delete(this.apiUrl + '/data/imagen/' + id);
     }
 }
-    

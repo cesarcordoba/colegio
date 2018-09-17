@@ -1,10 +1,13 @@
 module.exports = ({Sequelize, sequelize } = conector) =>
     sequelize.define('portadas', {
-        nombre: Sequelize.STRING
+        id:{ type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
+        link: {
+            type: Sequelize.STRING,
+            allowNull: true
+        }
     },{
     	name : {
     		singular: 'portada',
     		plural: 'portadas'
         }
 	})
-

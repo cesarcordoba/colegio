@@ -12,15 +12,15 @@ var evento  = require('./modelos/Eventos')(conector);
 
 // LLaves Sociales
 usuario.hasOne(llave , {as: 'SocialKey', foreignKey: 'id_usuario'});
-llave.belongsTo(usuario, {as: 'Usuario', foreignKey: 'id_usuario'});
+llave.belongsTo(usuario, {as: 'Usuario', foreignKey: 'id_usuario', onDelete: 'CASCADE'});
 
 llave.hasOne(avatar, {as: 'Avatar', foreignKey: 'social_key'});
-avatar.belongsTo(llave , {as: 'SocialKey', foreignKey: 'social_key'});
+avatar.belongsTo(llave , {as: 'SocialKey', foreignKey: 'social_key', onDelete: 'CASCADE'});
 
 noticia.belongsToMany(tag, {as: 'Tags', through: 'noticias-tags' , foreignKey: 'IdNoticia'})
 tag.belongsToMany(noticia, {as: 'Noticias', through: 'noticias-tags' , foreignKey: 'IdTag'})
 
-imagen.belongsTo(noticia, { as : 'Noticias', foreignKey:'IdNoticia'});
+imagen.belongsTo(noticia, { as : 'Noticias', foreignKey:'IdNoticia', onDelete: 'CASCADE'});
 noticia.hasMany(imagen, { as : 'Imagenes', foreignKey:'IdNoticia'});
 
 portada.belongsTo(noticia, { as : 'Noticias', foreignKey:'IdNoticia'});
@@ -38,7 +38,7 @@ evento.belongsToMany(categoria, {as: 'Categorias', through: 'categorias-eventos'
 categoria.belongsToMany(miembro, {as: 'Miembros', through: 'categorias-miembros' , foreignKey: 'IdCategoria'})
 miembro.belongsToMany(categoria, {as: 'Categorias', through: 'categorias-miembros' , foreignKey: 'IdMiembro'})
 
-imagen.belongsTo(evento, { as : 'Eventos', foreignKey:'IdEvento'});
+imagen.belongsTo(evento, { as : 'Eventos', foreignKey:'IdEvento', onDelete: 'CASCADE'});
 evento.hasMany(imagen, { as : 'Imagenes', foreignKey:'IdEvento'});
 
 portada.belongsTo(evento, { as : 'Eventos', foreignKey:'IdEvento'});

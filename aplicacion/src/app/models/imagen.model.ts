@@ -1,27 +1,29 @@
 
 export class Imagen {
     private id: number;
-    public imagen: any;
+    public imagen: string;
 
-	constructor($id: number, $imagen: any) {
-		this.id = $id;
-		this.imagen = $imagen;
+	constructor(arg) {
+		this.id = arg.id;
+		this.imagen = arg.imagen;
 	}
 
-	public getId(): number {
-		return this.id;
-	}
+    obtenerEventos(){
 
-	public getImagen(): any {
-		return this.imagen;
-	}
+        console.log('obteniendo evento')
 
-	public setId(value: number) {
-		this.id = value;
-	}
+    }
 
-	public setImagen(value: any) {
-		this.imagen = value;
-	}
+    modificarEventos(){
+        console.log('modificando evento')
+    }
+
+    obtenerNoticias(){
+        console.log('obteniendo noticias')
+    }
+
+    modificarNoticias(){
+        console.log('modificando noticias')
+    }
 
 }

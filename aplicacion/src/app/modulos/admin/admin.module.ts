@@ -8,8 +8,13 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { AdminComponent } from './admin.component';
 import { HomeComponent } from './home/home.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { ImagenesComponent } from './imagenes/imagenes.component';
+import { MiembrosComponent} from './miembros/miembros.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticias/noticia/noticia.component';
+import { TagsComponent} from './tags/tags.component';
 import { ConfirmDelDialogComponent } from './fragments/confirm-del-dialog/confirm-del-dialog.component'
 import { AnadirProyectoDialog } from './fragments/anadir-proyecto-dialog/anadir-proyecto-dialog.component';
 
@@ -41,7 +46,12 @@ import { ExtrasModule } from '../../extras/extras.module';
     ConfirmDelDialogComponent,
     AnadirProyectoDialog,
     NoticiasComponent,
-    NoticiaComponent
+    NoticiaComponent,
+    CategoriasComponent,
+    EventosComponent,
+    ImagenesComponent,
+    MiembrosComponent,
+    TagsComponent
   ]
 
 })

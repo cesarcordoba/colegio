@@ -10,9 +10,7 @@ export class Noticia {
     }
 
     obtenerImagenes(){
-
         console.log('obteniendo imagen')
-
     }
 
     modificarImagenes(){

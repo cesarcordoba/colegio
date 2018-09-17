@@ -1,0 +1,11 @@
+mat-card.noticias-container
+    mat-toolbar(color="primary")
+        h1 Categorias
+    .buscador
+        form.formularioNoticias
+            mat-form-field.example-full-width
+                input(type="text" placeholder="Buscar Categoria" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto")
+                mat-autocomplete(#auto="matAutocomplete")
+                    mat-option(*ngFor="let option of options" [value]="option") {{option}}
+        button(mat-raised-button)
+            mat-icon add

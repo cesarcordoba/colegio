@@ -6,8 +6,13 @@ import { RouterModule, Routes } from '@angular/router';
 /* Importamos los componentes que se usarán en las rutas
  */
 import { AdminComponent } from './admin.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { ImagenesComponent } from './imagenes/imagenes.component';
+import { MiembrosComponent} from './miembros/miembros.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticias/noticia/noticia.component';
+import { TagsComponent} from './tags/tags.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from '../../guards/auth.guard';
 import { AuthService } from '../../services/auth.service';
@@ -33,23 +38,23 @@ const admin_routers: Routes = [
     },
     {
       path: 'imagenes',
-      component: HomeComponent
+      component: ImagenesComponent
     },
     {
       path: 'miembros',
-      component: HomeComponent
+      component: MiembrosComponent
     },
     {
       path: 'eventos',
-      component: HomeComponent
+      component: EventosComponent
     },
     {
       path: 'categorias',
-      component: HomeComponent
+      component: CategoriasComponent
     },
     {
       path: 'tags',
-      component: HomeComponent
+      component: TagsComponent
     }
     ]
   }

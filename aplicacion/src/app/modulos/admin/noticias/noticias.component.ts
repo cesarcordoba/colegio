@@ -16,7 +16,6 @@ export class NoticiasComponent implements OnInit {
     constructor(private _router: Router){
         NoticiasService.obtener()
         .then(response => this.noticias = response.data.map(n => new Noticia(n))
-
     }
 
     verNoticia(id: number){

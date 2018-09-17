@@ -22,12 +22,12 @@ export class AdminComponent implements OnInit, OnDestroy {
 
     this.navLinks = [
       { path: '/admin', label: 'Inicio', icon : 'home'},
-      { path: '/admin/noticias', label: 'Noticias', icon : 'work'},
-      { path: '/admin/imagenes', label: 'Imagenes', icon : 'work'},
-      { path: '/admin/miembros', label: 'Miembros', icon : 'work'},
-      { path: '/admin/eventos', label: 'Evento', icon : 'work'},
-      { path: '/admin/categorias', label: 'Categorias', icon : 'work'},
-      { path: '/admin/tags', label: 'Tags', icon : 'work'}
+      { path: '/admin/noticias', label: 'Noticias', icon : 'import_contacts'},
+      { path: '/admin/imagenes', label: 'Imagenes', icon : 'photo'},
+      { path: '/admin/miembros', label: 'Miembros', icon : 'group'},
+      { path: '/admin/eventos', label: 'Evento', icon : 'date_range'},
+      { path: '/admin/categorias', label: 'Categorias', icon : 'list'},
+      { path: '/admin/tags', label: 'Tags', icon : 'bookmark'}
       ];
   }
   ngOnDestroy(): void {
