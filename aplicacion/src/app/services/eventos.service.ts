@@ -17,7 +17,7 @@ export class EventosService {
     }
 
     static crear(evento){
-        return axios.post(this.apisUrl + '/data/evento', evento);
+        return axios.post(this.apiUrl + '/data/evento', evento);
     }
 
     static editar(evento){

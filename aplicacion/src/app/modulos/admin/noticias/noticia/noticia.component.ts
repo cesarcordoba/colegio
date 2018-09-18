@@ -22,7 +22,7 @@ export class NoticiaComponent implements OnInit{
     ngOnInit(){
         this._route.params.subscribe(params => {
             NoticiasService.one(+params['id'])
-            .then(response => this.noticia = new Noticia(response.dataack))
+            .then(response => this.noticia = new Noticia(response.data))
         })
     }
 

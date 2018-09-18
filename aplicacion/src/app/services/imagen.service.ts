@@ -1,7 +1,8 @@
 
 import { Injectable } from '@angular/core'
 import { APILOCAL } from '../../environments/environment'
-import * as axios from 'axios'
+import * as axi from 'axios'
+var axios = axi.default;
 
 @Injectable()
 

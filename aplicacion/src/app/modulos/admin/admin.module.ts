@@ -14,6 +14,7 @@ import { ImagenesComponent } from './imagenes/imagenes.component';
 import { MiembrosComponent} from './miembros/miembros.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticias/noticia/noticia.component';
+import { NuevaNoticiaComponent } from './noticias/nueva-noticia/nueva-noticia.component';
 import { TagsComponent} from './tags/tags.component';
 import { ConfirmDelDialogComponent } from './fragments/confirm-del-dialog/confirm-del-dialog.component'
 import { AnadirProyectoDialog } from './fragments/anadir-proyecto-dialog/anadir-proyecto-dialog.component';
@@ -39,6 +40,7 @@ import { ExtrasModule } from '../../extras/extras.module';
   entryComponents: [
     ConfirmDelDialogComponent,
     AnadirProyectoDialog,
+    NuevaNoticiaComponent
   ],
   declarations: [
     AdminComponent,
@@ -47,6 +49,7 @@ import { ExtrasModule } from '../../extras/extras.module';
     AnadirProyectoDialog,
     NoticiasComponent,
     NoticiaComponent,
+    NuevaNoticiaComponent,
     CategoriasComponent,
     EventosComponent,
     ImagenesComponent,

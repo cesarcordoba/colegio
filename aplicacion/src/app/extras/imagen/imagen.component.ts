@@ -35,8 +35,8 @@ export class ImagenComponent implements OnInit {
 		})
 
 		this.idObserver.subscribe(id => {
-			ImagenService.obtenerImagen(id)
-			.then(response => response && response.data ? this.imagen = new Imagen(response.data.id, response.data.imagen): null)
+			// ImagenService.obtenerImagen(id)
+			// .then(response => response && response.data ? this.imagen = new Imagen(response.data.id, response.data.imagen): null)
 		})
 	}
 

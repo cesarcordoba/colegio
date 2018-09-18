@@ -5,7 +5,7 @@ mat-card.noticias-container
         form.formularioNoticias
             .autocomplete
                 autocomplete
-                button.buscar(mat-button)
+                button.buscar(mat-button (click) = "crearNueva()")
                     mat-icon add_circle
     .linea-separador
     .lista-noticias
