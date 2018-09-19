@@ -2,7 +2,7 @@ mat-card.noticias-container
     mat-toolbar(color="primary")
         h1 Noticias
     .buscador
-        form.formularioNoticias
+        form
             .autocomplete
                 autocomplete
                 button.buscar(mat-button (click) = "crearNueva()")
@@ -10,8 +10,13 @@ mat-card.noticias-container
     .linea-separador
     .lista-noticias
         h3 Lista de Noticias
-        
-        
-    
-    
-            
+        mat-list
+            mat-list-item(*ngFor="let noticia of noticias")
+                .nombre
+                    h3 {{noticia.nombre}}
+                .botones
+                    button.right(mat-button (click)="eliminarNoticia(noticia)")
+                        mat-icon delete
+                    button.right(mat-button (click)="mandarANoticia(noticia.id)")
+                        mat-icon edit
+                mat-divider

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Noticia} from '../../../models/noticia.model'
 import {NoticiasService} from '../../../services/noticias.service'
 import { MatDialog } from '@angular/material'
+import { ConfirmDelDialogComponent } from '../fragments/confirm-del-dialog/confirm-del-dialog.component'
 import {NuevaNoticiaComponent} from '../noticias/nueva-noticia/nueva-noticia.component'
 import { Router } from '@angular/router'
 
@@ -30,9 +31,30 @@ export class NoticiasComponent implements OnInit {
             width: '290px',
             height: '200px'
         }).afterClosed().subscribe(result => {
-            console.log(result)
+            result ?
+                NoticiasService.crear(result)
+                .then(response => this.noticias.push(new Noticia(response.data)))
+                .then(res=> console.log(this.noticias))
+            : null;
+        });
+    }
+
+    eliminarNoticia(noticia){
+        this.dialog.open(ConfirmDelDialogComponent,{
+            width: '290px',
+            height: '200px'
+        }).afterClosed().subscribe(result => {
+            result ?
+                NoticiasService.eliminar(noticia.id)
+                .then(response => this.noticias.splice(this.noticias.indexOf(noticia),1))
+                : null;
 
         });
+
+    }
+    mandarANoticia(id){
+
+        this._router.navigate(['/admin/noticias/' + id]);
     }
 
     ngOnInit(){

@@ -25,9 +25,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       { path: '/admin/noticias', label: 'Noticias', icon : 'import_contacts'},
       { path: '/admin/imagenes', label: 'Imagenes', icon : 'photo'},
       { path: '/admin/miembros', label: 'Miembros', icon : 'group'},
-      { path: '/admin/eventos', label: 'Evento', icon : 'date_range'},
-      { path: '/admin/categorias', label: 'Categorias', icon : 'list'},
-      { path: '/admin/tags', label: 'Tags', icon : 'bookmark'}
+      { path: '/admin/eventos', label: 'Eventos', icon : 'date_range'}
       ];
   }
   ngOnDestroy(): void {

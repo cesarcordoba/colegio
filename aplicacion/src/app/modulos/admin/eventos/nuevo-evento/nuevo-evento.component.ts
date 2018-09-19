@@ -1,28 +1,27 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Noticia } from '../../../../models/noticia.model';
+import { Evento } from '../../../../models/evento.model';
 
 @Component({
-    selector: 'app-nueva-noticia',
-    templateUrl: './nueva-noticia.component.pug',
-    styleUrls: ['./nueva-noticia.component.styl']
+    selector: 'app-nuevo-evento',
+    templateUrl: './nuevo-evento.component.pug',
+    styleUrls: ['./nuevo-evento.component.styl']
 })
 
-export class NuevaNoticiaComponent implements OnInit {
+export class NuevoEventoComponent implements OnInit {
     form: FormGroup;
-    data : Noticia;
+    data : Evento;
     constructor(
-        public dialogRef: MatDialogRef<NuevaNoticiaComponent>,
+        public dialogRef: MatDialogRef<NuevoEventoComponent>,
         private formBuilder: FormBuilder,
-        // @Inject(MAT_DIALOG_DATA) public data: Noticia
     ) {
-    this.data = new Noticia({})
+    this.data = new Evento({})
 }
-
         submit(){
             if(this.form.valid){
                 this.dialogRef.close(this.data)
+                console.log(this.data)
             }
 
         }
@@ -33,7 +32,7 @@ export class NuevaNoticiaComponent implements OnInit {
 
         ngOnInit(){
             this.form = this.formBuilder.group({
-                nombre:['', Validators.required]
+                titulo:['', Validators.required]
             })
 
         }

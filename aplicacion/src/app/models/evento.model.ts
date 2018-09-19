@@ -1,10 +1,10 @@
 export class Evento {
     id: number;
-    nombre: string;
+    titulo: string;
 
     constructor(arg){
         this.id = arg.id;
-        this.nombre = arg.nombre;
+        this.titulo = arg.titulo;
     }
 
     obtenerCategorias(){

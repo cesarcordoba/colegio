@@ -1,23 +1,22 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Noticia } from '../../../../models/noticia.model';
+import { Miembro } from '../../../../models/miembro.model';
 
 @Component({
-    selector: 'app-nueva-noticia',
-    templateUrl: './nueva-noticia.component.pug',
-    styleUrls: ['./nueva-noticia.component.styl']
+    selector: 'app-nuevo-miembro',
+    templateUrl: './nuevo-miembro.component.pug',
+    styleUrls: ['./nuevo-miembro.component.styl']
 })
 
-export class NuevaNoticiaComponent implements OnInit {
+export class NuevoMiembroComponent implements OnInit {
     form: FormGroup;
-    data : Noticia;
+    data : Miembro;
     constructor(
-        public dialogRef: MatDialogRef<NuevaNoticiaComponent>,
+        public dialogRef: MatDialogRef<NuevoMiembroComponent>,
         private formBuilder: FormBuilder,
-        // @Inject(MAT_DIALOG_DATA) public data: Noticia
     ) {
-    this.data = new Noticia({})
+    this.data = new Miembro({})
 }
 
         submit(){

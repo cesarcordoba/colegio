@@ -2,10 +2,21 @@ mat-card.noticias-container
     mat-toolbar(color="primary")
         h1 Eventos
     .buscador
-        form.formularioNoticias
-            mat-form-field.example-full-width
-                input(type="text" placeholder="Buscar Evento" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto")
-                mat-autocomplete(#auto="matAutocomplete")
-                    mat-option(*ngFor="let option of options" [value]="option") {{option}}
-        button(mat-raised-button)
-            mat-icon add
+        form
+            .autocomplete
+                autocomplete
+                button.buscar(mat-button (click) = "crearNuevo()")
+                    mat-icon add_circle
+    .linea-separador
+    .lista-eventos
+        h3 Lista de Eventos
+        mat-list
+            mat-list-item(*ngFor="let evento of eventos")
+                .nombre
+                    h3 {{evento.titulo}}
+                .botones
+                    button.right(mat-button (click)="eliminarEvento(evento)")
+                        mat-icon delete
+                    button.right(mat-button (click)="mandarAEvento(evento.id)")
+                        mat-icon edit
+                mat-divider
