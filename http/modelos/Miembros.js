@@ -2,7 +2,7 @@ module.exports = ({Sequelize, sequelize } = conector) =>
     sequelize.define('miembros', {
         id:{ type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
         nombre: Sequelize.STRING,
-        fecha_ingreso: Sequelize.DATE,
+        fecha: Sequelize.STRING,
         descripcion: Sequelize.TEXT
     },{
     	name : {

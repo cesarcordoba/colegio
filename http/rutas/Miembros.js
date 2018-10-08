@@ -10,5 +10,11 @@ route.route('/data/miembro/:id')
         .put(x.update)
         .delete(x.delete);
 
-module.exports = route;
+route.route('/data/unirMiembroxCategoria/:idMiembro/:idCategoria')
+        .post(x.unirACategoria)
+        .delete(x.removerDeCategoria);
 
+route.route('/data/obtenerMiembroxCategoria/:idMiembro')
+        .get(x.obtenerCategorias);
+
+module.exports = route;

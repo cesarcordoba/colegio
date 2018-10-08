@@ -9,27 +9,13 @@ export class Categoria {
         this.IdCategoria = arg.IdCategoria;
     }
 
-    obtenerSubcategorias(){
+    get id_Categoria(): number {
+      return this.id;
+   }
 
-    }
+   get _nombre(): string {
+     return this.nombre;
+  }
 
-    modificarSubcategorias(){
 
-    }
-
-    obtenerNoticas(){
-
-    }
-
-    modificarNoticias(){
-
-    }
-
-    obtenerMiembros(){
-
-    }
-
-    modificarMiembros(){
-        
-    }
 }

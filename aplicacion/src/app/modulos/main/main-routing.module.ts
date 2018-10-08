@@ -11,6 +11,14 @@ import { AuthGuard } from '../../guards/auth.guard';
 import { AuthService } from '../../services/auth.service';
 import { UsuarioComponent } from './usuario/usuario.component';
 
+import { NoticiasComponent } from './noticias/noticias.component';
+import { MiembrosComponent } from './miembros/miembros.component';
+import { EventosComponent } from './eventos/eventos.component';
+
+import { NoticiaComponent } from './noticias/noticia/noticia.component';
+import { MiembroComponent } from './miembros/miembro/miembro.component';
+import { EventoComponent } from './eventos/evento/evento.component';
+
 const main_routers: Routes = [
   {
     path: '',
@@ -32,6 +40,30 @@ const main_routers: Routes = [
       {
         path: 'user/:token',
         component: LoginComponent
+      },
+      {
+        path: 'noticias',
+        component: NoticiasComponent
+      },
+      {
+        path: 'noticias/:id',
+        component: NoticiaComponent
+      },
+      {
+        path: 'eventos',
+        component: EventosComponent
+      },
+      {
+        path: 'eventos/:id',
+        component: EventoComponent
+      },
+      {
+        path: 'miembros',
+        component: MiembrosComponent
+      },
+      {
+        path: 'miembro/:id',
+        component: MiembroComponent
       }
     ]
   }

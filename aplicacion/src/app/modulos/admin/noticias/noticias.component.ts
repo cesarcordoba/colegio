@@ -23,7 +23,6 @@ export class NoticiasComponent implements OnInit {
 
     verNoticia(id: number){
         this._router.navigate(['/admin/noticias/' + id]);
-
     }
 
     crearNueva(){

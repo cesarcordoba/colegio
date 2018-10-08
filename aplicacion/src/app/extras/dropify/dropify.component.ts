@@ -38,7 +38,7 @@ declare var $: any
        var myReader: FileReader = new FileReader();
   
        myReader.onloadend = (e) => {
-           this.propagateChange(myReader.result);
+           this.propagateChange(file);
            this.selectedFileName = file.name;
        }
        myReader.readAsDataURL(file);

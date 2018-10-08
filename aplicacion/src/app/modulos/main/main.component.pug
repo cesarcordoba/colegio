@@ -3,14 +3,26 @@ main
         include ./partials/header.pug
     .contenido([@routerTransition]="getState(o)")
         router-outlet(#o="outlet")
-    .footer(color="primary")
-        .starbrand
+    .footer
+        .seccion-izquierda
+            .direccion
+                .direccion-icono
+                    mat-icon location_on
+                    p Donceles 104
+                p Centro Historico
+                p México, Ciudad de México, C.P. 06020
+                a((click)="hola()" style="text-decoration: underline;") Ver mapa
+            .contacto
+                h1 Contactanos
+                .contacto-mail
+                    mat-icon mail
+                    p hola@colnal.mx
+                .contacto-phone
+                    mat-icon phone
+                    p (52)(55) 5789 4330
+        .seccion-derecha
             .redes-sociales
-                p Siguenos en:
-                .iconos-sociales
-                    a(href="https://es-la.facebook.com/CadaNinoUnaSonrisa/")
-                        img(src="assets/images/facebook-32.png" alt="facebook-logo"  href="https://es-la.facebook.com/CadaNinoUnaSonrisa/")
-            .starbrand
-                p Desarrollado por
-                a(href="https://www.starbrand.mx")
-                    img(src="assets/images/starbrand.svg" alt="Starbrand-logo"  href="https://www.starbrand.mx")
+                img(src="assets/images/colnal_iconos_facebook.png")
+                img(src="assets/images/colnal_iconos_twitter.png")
+                img(src="assets/images/colnal_iconos_instagram.png")
+                img(src="assets/images/colnal_iconos_youtube.png")

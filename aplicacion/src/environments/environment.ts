@@ -16,5 +16,8 @@ export const APILOCAL = {
   url: 'http://localhost:5000'
 };
 
-
-
+export const AWSKEYS = {
+  accessKeyId: 'AKIA_____________IPHPSBELTG5QELAA',
+  secretAccessKey: 'ZK+UwZ____________d6vl0tBQff/jZ21dkJTJC37epdWTDP5uXt',
+  region: 'us-east-1'
+}

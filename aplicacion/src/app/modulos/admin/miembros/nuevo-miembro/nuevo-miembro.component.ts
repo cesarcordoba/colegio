@@ -33,6 +33,7 @@ export class NuevoMiembroComponent implements OnInit {
         ngOnInit(){
             this.form = this.formBuilder.group({
                 nombre:['', Validators.required]
+
             })
 
         }

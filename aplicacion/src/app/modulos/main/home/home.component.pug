@@ -1,3 +1,115 @@
-.home
+.home-container
+    .slider
+        ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfig', (afterchange)='afterChange($event)')
+            .slide(*ngFor='let slide of slides' ngxSlickItem)
+                img(src='{{ slide.img }}', height='100%', width='100%')
+    .barrita-gris
+        button(mat-button) BOLETIN
+            mat-icon email
+        button(mat-button) RECORRIDO VIRTUAL
     .home-content
-        p Este es un home :D
+        .home-centro
+            .noticias-container
+                .titulo
+                    h1 Noticias
+                .noticias-content
+                    .imagen
+                        img(src="http://placehold.it/350x150/000000")
+                    .noticias
+                        .cabecera
+                            .tipos
+                                mat-tab-group(dynamicHeight)
+                                    mat-tab(label="Institución")
+                                        mat-card.intitucion-content
+                                            h4 Noticias de Institución
+                                    mat-tab(label="Actualidad")
+                                        mat-card.actualidad-content
+                                            h4 Noticias de Actualidad
+                                    mat-tab(label="Prensa")
+                                        mat-card.prensa-content
+                                            h4 Noticias de Prensa
+                            .busqueda
+                                mat-icon search 
+                                autocomplete(style="width: 100%;")
+                .grid-noticias
+                    .slider-grid
+                        ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfigGrid')
+                            .slide(*ngFor='let slideGrid of slidesGrids' ngxSlickItem)
+                                img(src='{{ slideGrid.img }}' style="height: 150px; width: 100%;")
+                                h3 {{slideGrid.introduccion}}
+            .transmiciones
+                .seccion-derecha
+                    .slider-vivo
+                        ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfigVivo')
+                            .slide(*ngFor='let slideVivo of slidesVivos' ngxSlickItem)
+                                h3 {{slideVivo.introduccion}}
+                .seccion-izquierda
+                    img(src="http://placehold.it/350x150/111111")
+            .linea-separador
+            .acervo-cultural
+                .imagen-derecha
+                    img(src="http://placehold.it/350x150/000000")
+                .texto-centro
+                    .texto
+                        h1 Acervo Cultural
+                        p Accede a la biblioteca, videoteca y fonoteca virtual del Colegio Nacional
+                    .botones
+                        .biblioteca
+                            img(src="assets/images/colnal_biblioteca.png")
+                            button(mat-button) Biblioteca
+                        .fonoteca
+                            img(src="assets/images/colnal_fonoteca.png")
+                            button(mat-button) Fonoteca
+                        .videoteca
+                            img(src="assets/images/colnal_videoteca.png")
+                            button(mat-button) Videoteca
+                .parte-izquierda
+                    .imagen
+                        img(src="http://placehold.it/350x150/666666")
+                    .recomedaciones
+                        h1 Recomendaciones C.I.
+                
+            .linea-separador
+            .editoriales
+                .lista-novedades
+                    .link
+                        h4 MAS NOVEDADES
+                    .linea-novedades
+                    .lista
+                        mat-list
+                            mat-list-item(*ngFor="let novedad of novedades")
+                                .nombre
+                                    h3 {{novedad.nombre}}
+                                mat-divider
+                .novedades-editoriales
+                    .titulo
+                        h2 Novedades Editoriales
+                    .slider-novedades
+                        ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfigNovedades')
+                            .slide(*ngFor='let novedad of novedades' ngxSlickItem)
+                                .imagen-portada
+                                    img(src='{{ novedad.img }}')
+                                h3 {{novedad.nombre}}
+                                p {{novedad.fecha}}
+            .recorridos
+                .recorridos-virtual
+                    .nombre
+                        h1 RECORRIDO VIRTUAL
+                        p Conoce de cerca las instalaciones
+                    .video
+                        .triangulo
+                .seccion-izquierda
+                    .tweets-container
+                        .tweets-content
+                            img(src="http://placehold.it/350x150/111111")
+                    .boletin-semanal
+                        h1 BOLETIN SEMANAL
+                        p suscribete a nuestro boletin de noticias solbre el colegio
+                        .suscripcion
+                            autocomplete(style="width: 100%;")
+                            button.suscribete(mat-button) SUSCRIBETE
+                        
+        .home-lateral
+            .titulo
+                h4 AGENDA
+                .linea-titulo-agenda

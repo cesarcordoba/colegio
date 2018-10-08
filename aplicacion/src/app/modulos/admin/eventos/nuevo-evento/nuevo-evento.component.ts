@@ -32,7 +32,7 @@ export class NuevoEventoComponent implements OnInit {
 
         ngOnInit(){
             this.form = this.formBuilder.group({
-                titulo:['', Validators.required]
+                nombre:['', Validators.required]
             })
 
         }

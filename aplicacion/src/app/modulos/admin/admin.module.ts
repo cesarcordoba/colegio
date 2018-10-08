@@ -20,6 +20,7 @@ import { NuevaNoticiaComponent } from './noticias/nueva-noticia/nueva-noticia.co
 import { NuevoEventoComponent } from './eventos/nuevo-evento/nuevo-evento.component';
 import { ConfirmDelDialogComponent } from './fragments/confirm-del-dialog/confirm-del-dialog.component'
 import { AnadirProyectoDialog } from './fragments/anadir-proyecto-dialog/anadir-proyecto-dialog.component';
+import { TagComponent } from './noticias/noticia/tags/tag.component';
 
 import { MaterialModule } from '../../extras/material.module';
 import { ExtrasModule } from '../../extras/extras.module';
@@ -44,7 +45,8 @@ import { ExtrasModule } from '../../extras/extras.module';
     AnadirProyectoDialog,
     NuevaNoticiaComponent,
     NuevoMiembroComponent,
-    NuevoEventoComponent
+    NuevoEventoComponent,
+    TagComponent
   ],
   declarations: [
     AdminComponent,
@@ -60,7 +62,8 @@ import { ExtrasModule } from '../../extras/extras.module';
     MiembrosComponent,
     MiembroComponent,
     NuevoMiembroComponent,
-    NuevoEventoComponent
+    NuevoEventoComponent,
+    TagComponent
   ]
 
 })

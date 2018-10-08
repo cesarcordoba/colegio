@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack.config-prod.js",
-    "start": "webpack-dev-server --host 0.0.0.0 --port=4200",
+    "start": "webpack-dev-server --host lvh.me --port=4200",
     "test": "karma start ./karma.conf.js",
     "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
     "e2e": "protractor ./protractor.conf.js"
@@ -33,6 +33,7 @@
     "@vimeo/player": "^2.3.0",
     "angular-froala-wysiwyg": "^2.8.4",
     "angular4-social-login": "^1.1.1",
+    "aws-sdk": "^2.324.0",
     "c3": "^0.4.21",
     "chart.js": "^2.7.1",
     "core-js": "^2.4.1",

@@ -32,8 +32,8 @@ categoria.hasMany(noticia, { as : 'Noticias', foreignKey:'IdCategoria'});
 categoria.hasMany(categoria, { as : 'Subcategorias', foreignKey:'IdCategoria'});
 categoria.belongsTo(categoria, { as : 'Categoria', foreignKey:'IdCategoria'});
 
-categoria.belongsToMany(evento, {as: 'Eventos', through: 'categorias-eventos' , foreignKey: 'IdCategoria'})
-evento.belongsToMany(categoria, {as: 'Categorias', through: 'categorias-eventos' , foreignKey: 'IdEvento'})
+categoria.belongsToMany(evento, { as: 'Eventos', through: 'categorias-eventos', foreignKey: 'IdCategoria' })
+evento.belongsToMany(categoria, { as: 'Categorias', through: 'categorias-eventos', foreignKey: 'IdEvento' })
 
 categoria.belongsToMany(miembro, {as: 'Miembros', through: 'categorias-miembros' , foreignKey: 'IdCategoria'})
 miembro.belongsToMany(categoria, {as: 'Categorias', through: 'categorias-miembros' , foreignKey: 'IdMiembro'})
@@ -43,6 +43,9 @@ evento.hasMany(imagen, { as : 'Imagenes', foreignKey:'IdEvento'});
 
 portada.belongsTo(evento, { as : 'Eventos', foreignKey:'IdEvento'});
 evento.hasOne(portada, { as : 'Portada', foreignKey:'IdEvento'});
+
+portada.belongsTo(miembro, { as : 'Miembros', foreignKey:'IdMiembro'});
+miembro.hasOne(portada, { as : 'Portada', foreignKey:'IdMiembro'});
 
 evento.belongsToMany(miembro, {as: 'Miembros', through: 'eventos-miembros' , foreignKey: 'IdEvento'})
 miembro.belongsToMany(evento, {as: 'Eventos', through: 'eventos-miembros' , foreignKey: 'IdMiembro'})

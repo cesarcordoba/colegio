@@ -1,10 +1,11 @@
 module.exports = ({Sequelize, sequelize } = conector) =>
     sequelize.define('eventos', {
         id:{ type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
-        titulo: Sequelize.STRING,
+        nombre: Sequelize.STRING,
         descripcion: Sequelize.TEXT,
         ubicacion: Sequelize.STRING,
-        fecha: Sequelize.DATE
+        fecha: Sequelize.DATE,
+        hora: Sequelize.STRING
     },{
     	name : {
     		singular: 'evento',

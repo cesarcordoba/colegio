@@ -18,6 +18,12 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
+import { NoticiasComponent } from './noticias/noticias.component';
+import { NoticiaComponent } from './noticias/noticia/noticia.component';
+import { MiembrosComponent } from './miembros/miembros.component';
+import { MiembroComponent } from './miembros/miembro/miembro.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { EventoComponent } from './eventos/evento/evento.component';
 
 @NgModule({
 	imports: [
@@ -38,7 +44,13 @@ import { UsuarioComponent } from './usuario/usuario.component';
 		MainComponent,
 		HomeComponent,
 		LoginComponent,
-		UsuarioComponent
+		UsuarioComponent,
+		NoticiasComponent,
+		MiembrosComponent,
+		EventosComponent,
+		NoticiaComponent,
+		MiembroComponent,
+		EventoComponent
 	],
 	entryComponents: [
 		LoginComponent

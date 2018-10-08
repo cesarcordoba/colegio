@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, OnDestroy, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material';
@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
 	templateUrl: './main.component.pug',
 	styleUrls: ['./main.component.styl'],
 	providers: [MediaMatcher, AuthService],
+	encapsulation: ViewEncapsulation.None,
 	animations: [
 		trigger('routerTransition', [
 			transition('* <=> *', [
@@ -61,9 +62,11 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 		this._mobileQueryListener = () => changeDetectorRef.detectChanges();
 		this.mobileQuery.addListener(this._mobileQueryListener);
 		this.navLinks = [
-			{ path: '/proyectos', label: 'Proyectos', icon: 'airplanemode_active' },
-			{ path: '/nosotros', label: 'Nosotros', icon: 'airplanemode_active' },
+			{ path: '/', label: 'HOME', icon: 'home' },
 			{ path: '/login', label: 'Login', icon: 'airplanemode_active' },
+			{ path: '/noticias', label: 'Noticias'},
+			{ path: '/eventos', label: 'Eventos'},
+			{ path: '/miembros', label: 'Miembros'}
 		];
 	}
 

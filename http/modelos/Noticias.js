@@ -4,6 +4,7 @@ module.exports = ({Sequelize, sequelize } = conector) =>
         nombre: Sequelize.STRING,
         introduccion: Sequelize.TEXT,
         descripcion: Sequelize.TEXT,
+        tipo: Sequelize.STRING
     },{
     	name : {
     		singular: 'noticia',

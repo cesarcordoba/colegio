@@ -1,14 +1,319 @@
-mobile = 'screen and (max-width: 768px)'
-
-.home
-    display flex
-    width 100%
-    height 100%
-    justify-content center
-    align-items center
+gris = #aaaaaa
+grisTexto = #9b9b9b
+fondoAgenda = #fafafa
+fondoAcervo = #2f2f2f
+colorLetras = #c9c9c9
+.home-container
+    .slider
+        height 340px
+        .carousel
+            height 100%
+            .slick-list
+                height 100%
+                .slick-track
+                    height 100%
+            button.slick-prev
+                left inherit !important
+                right 89%
+                z-index 1
+                width 100px
+                height 100px
+                &:before
+                    font-family inherit
+                    content '‹'
+                    font-size 100px
+            button.slick-next
+                right inherit !important
+                left 89%
+                width 100px
+                height 100px
+                &:before
+                    font-family inherit
+                    content '›'
+                    font-size 100px
+    .barrita-gris
+        background-color gris
+        width 100%
+        display flex
+        justify-content center
+        align-items center
     .home-content
-        display grid
-        grid-gap 10px
-        grid-template-areas: "nosotros comentarios facebook-button"
-        width 90%
-        height 100%
+        display flex
+        flex-direction row
+        .home-centro
+            position relative
+            margin 2vh 2vw
+            width 80vw
+            .noticias-container
+                display flex
+                flex-direction column
+                .noticias-content
+                    display flex
+                    flex-direction row
+                    height 300px
+                    .imagen
+                        width 50%
+                        img
+                            width 100%
+                            height 100%
+                    .noticias
+                        width 50%
+                        .cabecera
+                            display flex
+                            flex-direction row
+                            .tipos
+                                width 55%
+                            .busqueda
+                                width 45%
+                                display flex
+                                flex-direction row
+                                justify-content center
+                                align-items flex-start
+                                mat-icon
+                                    margin-top 24px
+            .grid-noticias
+                margin-top 3vh
+                .slider-grid
+                    height 300px
+                    width 100%
+                    .carousel
+                        button.slick-prev
+                            left inherit !important
+                            right 89%
+                            z-index 1
+                            width 100px
+                            height 100px
+                            &:before
+                                font-family inherit
+                                content '‹'
+                                font-size 100px
+                        button.slick-next
+                            right inherit !important
+                            left 89%
+                            width 100px
+                            height 100px
+                            &:before
+                                font-family inherit
+                                content '›'
+                                font-size 100px
+            .transmiciones
+                display flex
+                flex-direction row
+                height 300px
+                .seccion-derecha
+                    width 30%
+                    height 100%
+                    .slider-vivo
+                        height 300px
+                        background-color black
+                        .carousel
+                            height 100%
+                            .slick-list
+                                height 100%
+                                .slick-track
+                                    height 100%
+                                    .slick-slide
+                                        display flex
+                                        justify-content center
+                                        align-items center
+                                        h3
+                                            color white
+                                            text-align center
+                            button.slick-prev
+                                left inherit !important
+                                right 89%
+                                z-index 1
+                                &:before
+                                    font-family inherit
+                                    content '‹'
+                                    font-size 100px
+                            button.slick-next
+                                right inherit !important
+                                left 89%
+                                &:before
+                                    font-family inherit
+                                    content '›'
+                                    font-size 100px
+                .seccion-izquierda
+                    width 70%
+                    height 100%
+                    img
+                        width 100%
+                        height 100%
+            .linea-separador
+                height 1px
+                width 100%
+                background-color gris
+                opacity 0.6
+                margin-top 4vh
+            .acervo-cultural
+                position relative
+                height 240px
+                width 100%
+                display flex
+                flex-direction row
+                .imagen-derecha
+                    width 33%
+                    height 100%
+                    img
+                        height 100%
+                        width 100%
+                .texto-centro
+                    width 33%
+                    background-color fondoAcervo
+                    height 100%
+                    display flex
+                    flex-direction column
+                    justify-content center
+                    align-items center
+                    .texto
+                        width 70%
+                        h1, p
+                            color colorLetras
+                        p
+                            margin 0
+                    .botones
+                        width 70%
+                .parte-izquierda
+                    position relative
+                    width 34%
+                    height 100%
+                    .imagen
+                        height 200px
+                        img
+                            height 100%
+                            width 100%
+                    .recomedaciones
+                        height 40px
+                        width 100%
+                        background-color #1e1e1e
+                        display flex
+                        justify-content center
+                        align-items center
+                        h1
+                            color colorLetras
+                            margin 0
+            .editoriales
+                display flex
+                flex-direction row
+                justify-content center
+                align-items center
+                .lista-novedades
+                    width 30%
+                    .link
+                        width 100%
+                        h4
+                            text-align center
+                            color red
+                            font-size 12px
+                    .linea-novedades
+                        height 0.5px
+                        width 100%
+                        background-color gris
+                        opacity 0.4
+                    .lista
+                        margin-right 2vh
+                .novedades-editoriales
+                    width 70%
+                    .slider-novedades
+                        .carousel
+                            .slick-list
+                                .slick-track
+                                    .slick-slide
+                                        width 200px !important
+                                        height 30vh !important
+                                        margin-right 1vw
+                                        .imagen-portada
+                                            height 20vh
+                                            img
+                                                height 100%
+                                                width 100%
+                            button.slick-prev
+                                left inherit !important
+                                right 89%
+                                z-index 1
+                                width 100px
+                                height 100px
+                                &:before
+                                    font-family inherit
+                                    content '‹'
+                                    font-size 100px
+                            button.slick-next
+                                right inherit !important
+                                left 89%
+                                width 100px
+                                height 100px
+                                &:before
+                                    font-family inherit
+                                    content '›'
+                                    font-size 100px
+            .recorridos
+                display flex
+                flex-direction row
+                .recorridos-virtual
+                    width 60%
+                    display flex
+                    flex-direction row
+                    .nombre
+                        width 25%
+                        background-color fondoAcervo
+                        h1, p
+                            color colorLetras
+                        p
+                            margin 0
+                    .video
+                        width 75%
+                        background-color black
+                        position relative
+                        .triangulo
+                            position absolute
+                            top 40%
+                            right 50%
+                            width 0
+                            height 0
+                            border-left 50px solid white
+                            border-top 25px solid transparent
+                            border-bottom 25px solid transparent
+                .seccion-izquierda
+                    width 40%
+                    .tweets-container
+                        width 100%
+                        background-color fondoAcervo
+                        display flex
+                        justify-content center
+                        align-items center
+                    .boletin-semanal
+                        background-color fondoAcervo
+                        h1, p
+                            color white
+                        p
+                            font-size 12px
+                        .suscripcion
+                            display flex
+                            flex-direction row
+                            justify-content center
+                            align-items center
+                            .suscribete
+                                background-color #3d3d3d
+                                span
+                                    color white
+                                    font-size 11px
+        .home-lateral
+            background-color fondoAgenda
+            width 20vw
+            .titulo
+                margin-top 1.5vh
+                display flex
+                flex-direction column
+                width 100%
+                justify-content center
+                align-items center
+                h4
+                    font-size 16px
+                    margin 0
+                .linea-titulo-agenda
+                    margin-top 0.5vh
+                    background-color gris
+                    height 1px
+                    width 50%
+                    opacity 0.5

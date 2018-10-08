@@ -1,29 +1,14 @@
 
 export class Imagen {
-    private id: number;
-    public imagen: string;
+    id: number;
+    key: string;
+    link: string;
 
 	constructor(arg) {
 		this.id = arg.id;
-		this.imagen = arg.imagen;
+        this.key = arg.key;
+        this.link = arg.link;
 	}
 
-    obtenerEventos(){
-
-        console.log('obteniendo evento')
-
-    }
-
-    modificarEventos(){
-        console.log('modificando evento')
-    }
-
-    obtenerNoticias(){
-        console.log('obteniendo noticias')
-    }
-
-    modificarNoticias(){
-        console.log('modificando noticias')
-    }
 
 }

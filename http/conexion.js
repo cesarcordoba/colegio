@@ -48,7 +48,7 @@ var sequelize = new Sequelize('colegio', 'root', '1234', {
 
 // sequelize.sync()
 // .then(() =>  console.log('Connecion realizada'))
-// .catch(err =>  console.log('No se puede conectar a la bd:', err))
+// .catch(err =>  console.log('No se puede conectar a la bd:', err));
 
 module.exports.Sequelize = Sequelize;
 module.exports.sequelize = sequelize;

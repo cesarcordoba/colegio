@@ -1,2 +1,57 @@
-h2 {{miembro?.nombre}}
-p Este miembro tiene el id: {{miembro?.id}}
+.miembro-container
+    .miembro-infoBasica
+        mat-card
+            mat-toolbar(color="primary")
+                .info-basica
+                    h1 Información Básica
+                    button(mat-button (click)="mandarAEdicion()" )
+                        mat-icon(*ngIf="visible" matTooltip="Cerrar Edicion") close
+                        mat-icon(*ngIf="!visible" matTooltip="Editar Noticia") edit
+            .infobasica-content(*ngIf="!visible")
+                h4 Nombre:
+                p {{miembro.nombre}}
+                h4 Fecha de Ingreso:
+                p {{miembro.fecha}}
+                h4 Acerca de:
+                p([innerHtml] = "miembro.descripcion")
+            .form(*ngIf="visible")
+                form(class="formulario" [formGroup]="form" (ngSubmit)="submit(miembro)" novalidate)
+                    mat-form-field(class="input-layout")
+                        input(matInput formControlName="nombre" placeholder="Nombre" [(ngModel)]="miembro.nombre" required)
+                    mat-form-field(class="input-layout")
+                        input(matInput formControlName="fecha" placeholder="Fecha de ingreso(año)" [(ngModel)]="miembro.fecha" required)
+                    mat-form-field(class="input-layout")
+                        label Acerca de:
+                        textarea([froalaEditor]
+                            [(froalaModel)]="miembro.descripcion" 
+                            matInput name="descripcion" 
+                            autocomplete="off" 
+                            rows="35" 
+                            required)
+                    .boton-guardar
+                        button.saveEdicion(mat-button type="submit" matTooltip="Guardar Cambios")
+                            mat-icon save
+    .miembro-extras
+        .categorias
+            mat-card.categorias-container
+                mat-toolbar(color="primary")
+                    h1 Categorias
+                .selecciona-categoria
+                    mat-form-field
+                        mat-select(placeholder="Elije una categoria...")
+                            mat-option(*ngFor="let categoria of categorias" [value]="categoria.id" (click)="obtenerSubcategorias(categoria)") {{categoria.nombre}}
+                    mat-form-field(*ngIf="mostrarSubcategorias")
+                        mat-select(placeholder="Elije la Subcategoria...")
+                            mat-option(*ngFor="let subcategoria of subcategorias" [value]="subcategoria.id" (click)="agregarSubcategoria(subcategoria)") {{subcategoria.nombre}}
+                    button.saveCategoria(mat-button (click)="guardarCategoria()" matTooltip="Guardar")
+                        mat-icon save
+                .lista-categorias
+                    h3 Categorias Agregadas
+                    mat-list
+                        mat-list-item.contenedor(*ngFor="let categoriaAgregada of categoriasAgregadas")
+                            .nombre
+                                h3 {{categoriaAgregada.Categoria.nombre}} / {{categoriaAgregada.nombre}}
+                            .botones
+                                button.right(mat-button (click)="eliminarCategoria(categoriaAgregada)" matTooltip="Remover Categoria")
+                                    mat-icon delete
+                            mat-divider

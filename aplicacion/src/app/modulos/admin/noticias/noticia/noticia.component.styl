@@ -1,0 +1,58 @@
+verde = #549654;
+rojo = #ff4242
+.noticia-container
+    display flex
+    flex-direction column
+    .noticia-infoBasica
+        .info-basica
+            width 100%
+            display flex
+            flex-direction row
+            justify-content space-between
+            align-items center
+        .form
+            .input-layout
+                width 100%
+            .boton-guardar
+                width 100%
+                display flex
+                justify-content center
+                align-items center
+                .saveEdicion
+                    width 90px
+                    background-color verde
+    .noticia-extras
+        display flex
+        flex-direction row
+        .tags, .categorias
+            mat-card
+                height 100%
+        .tags
+            width 100%
+        .categorias
+            width 100%
+            .selecciona-categoria
+                width 100%
+                display flex
+                flex-direction column
+                justify-content center
+                align-items center
+                .mat-form-field
+                    width 100%
+                .saveCategoria
+                    width 90px
+                    background-color verde
+            .lista-categorias
+                .contenedor
+                    width 100%
+                    .mat-list-item-content
+                        justify-content space-between !important
+                        .right
+                            display flex
+                            justify-content center
+                            align-items center
+                            min-width inherit !important
+                            width 50px
+                            background-color rojo
+                            line-height inherit !important
+                            height 24px

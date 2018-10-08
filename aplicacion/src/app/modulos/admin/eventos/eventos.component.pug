@@ -13,7 +13,7 @@ mat-card.noticias-container
         mat-list
             mat-list-item(*ngFor="let evento of eventos")
                 .nombre
-                    h3 {{evento.titulo}}
+                    h3 {{evento.nombre}}
                 .botones
                     button.right(mat-button (click)="eliminarEvento(evento)")
                         mat-icon delete

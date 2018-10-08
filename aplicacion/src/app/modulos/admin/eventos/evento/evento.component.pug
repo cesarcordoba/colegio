@@ -1,3 +1,84 @@
-mat-card.evento-container
-    mat-toolbar(color="primary")
-        h1 Evento
+.evento-container
+    .evento-infoBasica
+        mat-card
+            mat-toolbar(color="primary")
+                .info-basica
+                    h1 Información Básica
+                    button(mat-button (click)="mandarAEdicion()" )
+                        mat-icon(*ngIf="visible" matTooltip="Cerrar Edicion") close
+                        mat-icon(*ngIf="!visible" matTooltip="Editar Noticia") edit
+            .infobasica-content(*ngIf="!visible")
+                h4 Nombre:
+                p {{evento.nombre}}
+                h4 Ubicacion:
+                p {{evento.ubicacion}}
+                h4 Fecha:
+                p {{evento.fecha | date: 'longDate'}}
+                h4 Hora del evento:
+                p {{evento.hora}}
+                h4 Descripcion del evento:
+                p([innerHtml] = "evento.descripcion")
+            .form(*ngIf="visible")
+                form(class="formulario" [formGroup]="form" (ngSubmit)="submit(evento)" novalidate)
+                    mat-form-field(class="input-layout")
+                        input(matInput formControlName="nombre" placeholder="Nombre:" [(ngModel)]="evento.nombre" required)
+                    mat-form-field(class="input-layout")
+                        input(matInput formControlName="ubicacion" placeholder="Ubicacion:" [(ngModel)]="evento.ubicacion" required)
+                    mat-form-field(class="input-layout")
+                        input(matInput formControlName="fecha" [matDatepicker]="picker" placeholder="Fecha:" [(ngModel)]="evento.fecha" required)
+                        mat-datepicker-toggle(matSuffix [for]="picker" )
+                        mat-datepicker(#picker )
+                    mat-form-field(class="input-layout")
+                        input(matInput formControlName="hora" [(ngModel)]="evento.hora" placeholder="Hora del Evento: p.e. 19:00 hr" required)
+                    mat-form-field(class="input-layout")
+                        label Descripcion:
+                        textarea([froalaEditor]
+                            [(froalaModel)]="evento.descripcion" 
+                            matInput name="descripcion" 
+                            autocomplete="off" 
+                            rows="35" 
+                            required)
+                    .boton-guardar
+                        button.saveEdicion(mat-button type="submit" matTooltip="Guardar Cambios")
+                            mat-icon save
+    .evento-extras
+        .categorias
+            mat-card.categorias-container
+                mat-toolbar(color="primary")
+                    h1 Categorias
+                .selecciona-categoria
+                    mat-form-field
+                        mat-select(placeholder="Elije una categoria...")
+                            mat-option(*ngFor="let categoria of categorias" (click)="agregarCategoria(categoria)" [value]="categoria.id")  {{categoria.nombre}}
+                    button.saveCategoria(mat-button (click)="guardarCategoria()" matTooltip="Agregar Categoria")
+                        mat-icon add
+                .lista-categorias
+                    h3 Categorias Agregadas
+                    mat-list
+                        mat-list-item.contenedor(*ngFor="let categoriaAgregada of categoriasAgregadas")
+                            .nombre
+                                h3 {{categoriaAgregada?.nombre}}
+                            .botones
+                                button.right(mat-button (click)="eliminarCategoria(categoriaAgregada)" matTooltip="Remover Categoria")
+                                    mat-icon delete
+                            mat-divider
+        .miembros
+            mat-card.miembros-container
+                mat-toolbar(color="primary")
+                    h1 Miembros
+                .selecciona-miembros
+                    mat-form-field
+                        mat-select(placeholder="Elije un miembro...")
+                            mat-option(*ngFor="let miembro of miembros" (click)="agregarMiembro(miembro)" [value]="miembro.id") {{miembro.nombre}}
+                    button.saveMiembro(mat-button (click)="guardarMiembro()" matTooltip="Agregar Miembro")
+                        mat-icon add
+                .lista-miembros
+                    h3 Miembros Agregados
+                    mat-list
+                        mat-list-item.contenedor(*ngFor="let miembroAgregado of miembrosAgregados")
+                            .nombre
+                                h3 {{miembroAgregado?.nombre}}
+                            .botones
+                                button.right(mat-button (click)="eliminarMiembro(miembroAgregado)" matTooltip="Remover Miembro")
+                                    mat-icon delete
+                            mat-divider

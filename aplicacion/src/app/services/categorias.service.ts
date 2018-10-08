@@ -27,4 +27,22 @@ export class CategoriasService {
     static eliminar(id: number){
         return axios.delete(this.apiUrl + '/data/categoria/' + id);
     }
+
+    static obtenerCategorias(){
+        return axios.get(this.apiUrl + '/data/obtenerCategorias' );
+    }
+
+    static obtenerSubCategorias(idCategoria: number){
+        return axios.get(this.apiUrl + '/data/obtenerSubCategorias/' + idCategoria);
+    }
+
+
+    static categoriasdeNoticias(){
+        return axios.get(this.apiUrl + '/data/categorias/categoriasdeNoticias');
+    }
+
+    static categoriasdeMiembros(){
+        return axios.get(this.apiUrl + '/data/categorias/categoriasdeMiembros');
+    }
+
 }

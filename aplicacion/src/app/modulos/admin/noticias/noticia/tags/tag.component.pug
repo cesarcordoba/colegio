@@ -1,0 +1,15 @@
+mat-toolbar.toolbar-tags(color="primary")
+    h1 Tags
+mat-form-field(class="input-layout" matTooltip="Añadir tags")
+      mat-chip-list(#chipList)
+        mat-chip(*ngFor="let tag of tags" [selectable]=true [removable]=true (remove)="remove(tag)") {{tag.nombre}}
+          mat-icon(matChipRemove ) cancel
+        input(
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]=true
+           (matChipInputTokenEnd)="add($event)"
+           [matAutocomplete]="auto" [formControl]="filtroTagsCtrl")
+        mat-autocomplete(#auto='matAutocomplete')
+          mat-option(*ngFor='let tag of filteredTags | async', [value]='tag.nombre' (click)="add($event, tag)")
+            span {{ tag.nombre }}

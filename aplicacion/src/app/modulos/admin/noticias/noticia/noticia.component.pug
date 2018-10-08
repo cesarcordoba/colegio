@@ -1,2 +1,46 @@
-h2 {{noticia?.nombre}}
-p Esta noticia tiene el id: {{noticia?.id}}
+.noticia-container
+    .noticia-infoBasica
+        mat-card
+            mat-toolbar(color="primary")
+                .info-basica
+                    h1 Información Básica
+                    button(mat-button (click)="mandarAEdicion()" )
+                        mat-icon(*ngIf="visible" matTooltip="Cerrar Edicion") close
+                        mat-icon(*ngIf="!visible" matTooltip="Editar Noticia") edit
+            .infobasica-content(*ngIf="!visible")
+                h4 Nombre:
+                p {{noticia.nombre}}
+                h4 Introducción:
+                p {{noticia.introduccion}}
+                h4 Tipo de noticia:
+                p {{noticia.tipo}}
+                h4 Cuerpo de la noticia:
+                p([innerHtml] = "noticia.descripcion")
+            .form(*ngIf="visible")
+                form(class="formulario" [formGroup]="form" (ngSubmit)="submit(noticia)" novalidate)
+                    mat-form-field(class="input-layout")
+                        label Titulo:
+                        input(matInput formControlName="nombre" [(ngModel)]="noticia.nombre" required)
+                    mat-form-field(class="input-layout")
+                        label introducción:
+                        input(matInput formControlName="introduccion" [(ngModel)]="noticia.introduccion" required)
+                    mat-form-field
+                        mat-select(placeholder="Elije un tipo..." formControlName="tipo" [(ngModel)]="noticia.tipo")
+                            mat-option(*ngFor="let tipo of tipos" [value]="tipo.nombre") {{tipo.nombre}}
+                    mat-form-field(class="input-layout")
+                        label Cuerpo de la noticia:
+                        textarea([froalaEditor]
+                            [(froalaModel)]="noticia.descripcion" 
+                            matInput name="descripcion" 
+                            autocomplete="off" 
+                            rows="35" 
+                            required)
+                    .boton-guardar
+                        button.saveEdicion(mat-button type="submit" matTooltip="Guardar Cambios")
+                            mat-icon save
+            
+    .noticia-extras
+        .tags
+            mat-card.tags-container
+                form
+                    tag([idNoticia] = "idNoticia")

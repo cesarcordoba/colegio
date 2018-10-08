@@ -1,81 +1,135 @@
-animation(animation, duration = 1s, delay = 0s)
-    -webkit-animation animation duration cubic-bezier(0.445, 0.050, 0.550, 0.950) !important
-    animation animation duration cubic-bezier(0.445, 0.050, 0.550, 0.950) !important
-    -webkit-transition all duration ease-in-out !important
-    -moz-transition all duration ease-in-out !important
-    -o-transition all duration ease-in-out !important
-    transition all duration ease-in-out !important
-    -webkit-transition-delay delay ease-in-out !important
-    transition-delay delay ease-in-out !important
-
+negro = #1b1b1b
+gris = #9b9b9b
 
 main
     width 100%
     height 100vh
     display grid
-    grid-gap 10px
     grid-template-columns 100% //indica que es de una columna de 100% de anccho
-    grid-template-rows 1fr 10fr 1fr //indica qie son 3 filas
+    grid-template-rows 0.5fr 10fr 4fr //indica qie son 3 filas
+
     header
-        width 100%
-        z-index 10
-        #menu
-            margin 0px !important
-            transition all 0.5s ease 
-            mat-toolbar-row
-                display flex
-                flex-direction row
-                justify-content space-around
-                img
-                    height 50px
-                .busqueda
-                    width 100%
-                    form
-                        width 100% !important
-                        height 60px !important
-                        background-color white !important
-                        border-radius 40px !important
-                        display flex
-                        justify-content: center
-                        align-items: center
-                        autocomplete
-                            height 40px !important
-                            width 98% !important
-                            margin 0px 10px 20px 0px
-                .botones
-                    color white !important
-        #menu-movil
-            margin 0px !important
-            transition all 0.5s ease 
-            mat-toolbar-row
-                display flex
-                flex-direction row
-                justify-content space-around
-                .menu, .inicio, .user
-                    width 100%
-    .contenido
-        width 100%
-        height 100%
-    .footer
-        display flex
-        background-color red
-        width 100%
-        height 100%
-        z-index 2
-        .redes-sociales
+        background-color negro
+        .header-container
+            height 100%
             display flex
-            flex-direction column
-            flex 1
-            .iconos-sociales
-                display flex
-                flex-direction row
-                margin 10px 10px 10px 10px
-        .starbrand
-            flex 1
-            display flex
-            color white
             flex-direction row
-            justify-content flex-end
-            img 
-                width 100%
-                height 100%
+            justify-content space-around
+            align-items center
+            .header-izquierda
+                .logo
+                    img
+                        height 100%
+                        width 80%
+            .header-centro
+                .menu-navegacion
+                    display flex
+                    flex-direction row
+                    justify-content center
+                    align-items center
+                    .mat-button.nav
+                        span
+                            color gris
+                            font-size 12px
+                    .linea
+                        height 25px
+                        width 1px
+                        background-color gris
+            .header-derecha
+                .menu-oculto
+                    display flex
+                    justify-content center
+                    align-items center
+                    mat-icon
+                        color gris
+                    .mat-button.menu
+                        span
+                            color gris
+                            text-transform uppercase
+                            font-weight 600
+                    mat-icon
+                        color gris
+    .footer
+        height 150%
+        background-color negro
+        display flex
+        flex-direction row
+        justify-content space-between
+        align-items center
+        .seccion-izquierda
+            width 40%
+            height 100%
+            display flex
+            flex-direction row
+            justify-content space-around
+            align-items center
+            .direccion
+                display flex
+                flex-direction column
+                .direccion-icono
+                    display flex
+                    flex-direction row
+                    align-items center
+                    p
+                        margin 0
+                        font-size 11px
+                        color gris
+
+                    mat-icon
+                        font-size 11px
+                        color gris
+                        height inherit
+                        width inherit
+                p, a
+                    color gris
+                    margin 0
+                    font-size 11px
+                a
+                    cursor pointer
+                    &:focus
+                        outline  0px
+            .contacto
+                display flex
+                flex-direction column
+                justify-content center
+                h1
+                    color gris
+                    font-size 13px
+                    margin 5px
+                .contacto-mail
+                    display flex
+                    flex-direction row
+                    align-items center
+                    p
+                        margin 0
+                        color gris
+                        font-size 11px
+
+                    mat-icon
+                        font-size 11px
+                        color gris
+                        height inherit
+                        width inherit
+                .contacto-phone
+                    display flex
+                    flex-direction row
+                    align-items center
+                    p
+                        margin 0
+                        color gris
+                        font-size 11px
+                    mat-icon
+                        color gris
+                        font-size 11px
+                        height inherit
+                        width inherit
+        .seccion-derecha
+            height 100%
+            width 20%
+            display flex
+            justify-content center
+            align-items center
+            .redes-sociales
+                img
+                    height 40px
+                    width 40px

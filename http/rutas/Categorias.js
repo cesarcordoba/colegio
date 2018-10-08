@@ -10,5 +10,15 @@ route.route('/data/categoria/:id')
         .put(x.update)
         .delete(x.delete);
 
-module.exports = route;
+route.route('/data/obtenerCategorias')
+        .get(x.obtenerCategorias);
 
+route.route('/data/obtenerSubCategorias/:idCategoria')
+        .get(x.obtenerSubCategorias);
+
+route.route('/data/categorias/categoriasdeNoticias')
+        .get(x.categoriasdeNoticias);
+
+route.route('/data/categorias/categoriasdeMiembros')
+        .get(x.categoriasdeMiembros);
+module.exports = route;

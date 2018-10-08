@@ -28,4 +28,16 @@ export class MiembrosService {
         return axios.delete(this.apiUrl + '/data/miembro/' + id);
     }
 
+    static unirACategoria(idMiembro, idCategoria){
+        return axios.post(this.apiUrl + '/data/unirMiembroxCategoria/' + idMiembro + '/' + idCategoria);
+    }
+
+    static obtenercategorias(idMiembro){
+        return axios.get(this.apiUrl + '/data/obtenerMiembroxCategoria/' + idMiembro);
+    }
+
+    static borrarUnionACategoria(idMiembro, idCategoria){
+        return axios.delete(this.apiUrl + '/data/unirMiembroxCategoria/' + idMiembro + '/' + idCategoria);
+    }
+
 }

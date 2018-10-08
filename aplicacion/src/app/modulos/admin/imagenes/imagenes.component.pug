@@ -1,0 +1,17 @@
+mat-card.imagenes-container
+    mat-toolbar(color="primary")
+        h1 Imagenes
+    .imagenes-container
+        mat-tab-group(dynamicHeight)
+            mat-tab(label="Portadas")
+                mat-card.portadas-content
+                    mat-select(placeholder="Destino de la imagen...")
+                        mat-option(*ngFor="let destino of destinos" [value]="destino.id" (click)="subdestino(destino.id)") {{destino.nombre}}
+                    mat-select(*ngIf="visible" placeholder="Elige una opcion ..." style="margin-top: 4vh;")
+                        mat-option(*ngFor="let subdestino of subdestinos" [value]="subdestino.id") {{subdestino.nombre}}
+            mat-tab(label="Imagenes")
+                mat-card.imagenes-content
+                    mat-select(placeholder="Destino de la imagen...")
+                        mat-option(*ngFor="let destinoImagen of destinosImagenes" ) {{destinoImagen.nombre}}
+        dropify([(ngModel)]="file" (remove)="file=null")
+                        

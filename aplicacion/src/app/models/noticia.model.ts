@@ -1,11 +1,17 @@
 export class Noticia {
     id: number;
     nombre: string;
+    introduccion: string;
+    descripcion: string;
+    tipo: string;
     IdCategoria : number;
 
     constructor(arg){
         this.id = arg.id;
         this.nombre = arg.nombre;
+        this.introduccion = arg.introduccion;
+        this.descripcion = arg.descripcion;
+        this.tipo = arg.tipo;
         this.IdCategoria = arg.IdCategoria;
     }
 

@@ -27,4 +27,28 @@ export class EventosService {
     static eliminar(id: number){
         return axios.delete(this.apiUrl + '/data/evento/' + id);
     }
+
+    static unirACategoria(idEvento, idCategoria){
+        return axios.post(this.apiUrl + '/data/unirEventosxCategoria/' + idEvento + '/' + idCategoria);
+    }
+
+    static obtenercategorias(idEvento){
+        return axios.get(this.apiUrl + '/data/obtenerEventosxCategoria/' + idEvento);
+    }
+
+    static borrarUnionACategoria(idEvento, idCategoria){
+        return axios.delete(this.apiUrl + '/data/unirEventosxCategoria/' + idEvento + '/' + idCategoria);
+    }
+
+    static unirAMiembro(idEvento, idMiembro){
+        return axios.post(this.apiUrl + '/data/unirEventosxMiembros/' + idEvento + '/' + idMiembro);
+    }
+
+    static obtenermiembros(idEvento){
+        return axios.get(this.apiUrl + '/data/obtenerEventosxMiembros/' + idEvento);
+    }
+
+    static borrarUnionAMiembro(idEvento, idMiembro){
+        return axios.delete(this.apiUrl + '/data/unirEventosxMiembros/' + idEvento + '/' + idMiembro);
+    }
 }

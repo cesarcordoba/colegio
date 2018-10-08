@@ -1,26 +1,20 @@
 export class Miembro {
     id: number;
     nombre: string;
+    fecha: string;
+    descripcion: string;
 
     constructor(arg){
         this.id = arg.id;
         this.nombre = arg.nombre;
+        this.fecha= arg.fecha;
+        this.descripcion = arg.descripcion;
     }
 
-    obtenerCategorias(){
-        console.log('obteniendo categorias')
+    get _id(): number {
+        return this.id;
     }
 
-    modificarCategorias(){
-        console.log('modificando categorias')
-    }
 
-    obtenerEventos(){
-        console.log('obteniendo eventos')
-    }
-
-    modificarEventos(){
-        console.log('modificando eventos')
-    }
 
 }

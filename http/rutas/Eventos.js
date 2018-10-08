@@ -10,5 +10,17 @@ route.route('/data/evento/:id')
         .put(x.update)
         .delete(x.delete);
 
-module.exports = route;
+route.route('/data/unirEventosxCategoria/:idEvento/:idCategoria')
+        .post(x.unirACategoria)
+        .delete(x.removerDeCategoria);
 
+route.route('/data/obtenerEventosxCategoria/:idEvento')
+        .get(x.obtenerCategorias);
+
+route.route('/data/unirEventosxMiembros/:idEvento/:idMiembro')
+        .post(x.unirAMiembro)
+        .delete(x.removerDeMiembro);
+
+route.route('/data/obtenerEventosxMiembros/:idEvento')
+        .get(x.obtenerMiembros);
+module.exports = route;
