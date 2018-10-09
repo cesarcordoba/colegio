@@ -1,2 +1,22 @@
-h1 Seccion de miembros en construccion
-p Atte: Starbrand
+.miembros-container
+    .miembros-content
+        .filtros
+            .encabezado
+                h1 Filtros
+                .linea
+                p palabra clave
+                .linea
+            .alfabetico
+                a(mat-button) TODOS
+                a(mat-button *ngFor="let letra of letras") {{letra.letra}}
+            .categorias
+                .exactas
+                    p Ciencias Exactas
+                .artes
+                    p Artes y Letras
+                .ciencias-sociales
+                    p Ciencias Sociales y Humanidades
+                .ciencias-biologicas
+                    p Ciencias Biologicas y de la salud
+            .lista
+        .grid-miembros

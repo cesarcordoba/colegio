@@ -1,8 +1,8 @@
 .busqueda
     autocomplete
-.noticias-container
-    .noticias-content
-        .nav
+.noticia-container
+    .noticia-content
+        .barra
             button(mat-button) TODO
             .linea
             button(mat-button) INSTITUCION
@@ -11,7 +11,10 @@
             .linea
             button(mat-button) PRENSA
         .grid-noticias
-            .grid-item-noticia
+            .grid-item-noticia(*ngFor="let noticia of noticias")
+                .etiqueta([style.backgroundColor]="noticia.color")
+                    p {{noticia.tipo}}
                 .imagen
                 .texto
-                    .leermas
+                    p {{noticia.introduccion}}
+                    h4 Leer mas

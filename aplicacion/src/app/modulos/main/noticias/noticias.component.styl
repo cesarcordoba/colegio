@@ -1,0 +1,45 @@
+@import "/../../../../default.styl";
+
+fondo = #898989
+fondAbajo = #606060
+
+.noticia-container
+    position relative
+    min-height 100vh
+    display flex
+    justify-content center
+    align-items flex-start
+    .noticia-content
+        position relative
+        min-height 70vh
+        width 70vw
+        display flex
+        flex-direction column
+        .barra
+            display flex
+            flex-direction row
+            justify-content center
+            align-items center
+            .linea
+                height 20px
+                background-color black
+                width 1px
+        .grid-noticias
+            display grid
+            grid-template-columns 1fr 1fr 1fr
+            grid-column-gap 5px
+            grid-row-gap 5px
+            .grid-item-noticia
+                position relative
+                .etiqueta
+                    position absolute
+                    p
+                        color white
+                .imagen
+                    background-color fondo
+                    height 180px
+                    width 100%
+                .texto
+                    background-color fondAbajo
+                    p
+                        color white
