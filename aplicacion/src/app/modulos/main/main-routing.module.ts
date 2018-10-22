@@ -18,6 +18,7 @@ import { EventosComponent } from './eventos/eventos.component';
 import { NoticiaComponent } from './noticias/noticia/noticia.component';
 import { MiembroComponent } from './miembros/miembro/miembro.component';
 import { EventoComponent } from './eventos/evento/evento.component';
+import { InstitucionComponent } from './institucion/institucion.component';
 
 const main_routers: Routes = [
   {
@@ -62,8 +63,12 @@ const main_routers: Routes = [
         component: MiembrosComponent
       },
       {
-        path: 'miembro/:id',
+        path: 'miembros/:id',
         component: MiembroComponent
+      },
+      {
+        path: 'institucion',
+        component: InstitucionComponent
       }
     ]
   }

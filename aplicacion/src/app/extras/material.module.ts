@@ -26,6 +26,7 @@ import {
 	MatSortModule,
 	MatCheckboxModule,
 	MatTabsModule,
+	MatRadioModule,
 	MatProgressBarModule
 } from '@angular/material';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
@@ -57,10 +58,12 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 	MatCheckboxModule,
 	MatTabsModule,
 	MatProgressBarModule,
-	ScrollDispatchModule
+	ScrollDispatchModule,
+	MatRadioModule
   ],
   exports: [
     MatMenuModule,
+	MatRadioModule,
 	MatButtonModule,
 	MatIconModule,
 	MatCardModule,

@@ -10,13 +10,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material'
 import { ConfirmDelDialogComponent } from '../../fragments/confirm-del-dialog/confirm-del-dialog.component'
 import { MatSnackBar } from '@angular/material';
+import { ImagenService } from '../../../../services/imagen.service';
 
 
 @Component({
     selector: 'evento',
     templateUrl: './evento.component.pug',
     styleUrls: ['./evento.component.styl'],
-    providers: [EventosService, MiembrosService, CategoriasService ]
+    providers: [EventosService, MiembrosService, CategoriasService, ImagenService]
 })
 
 export class EventoComponent implements OnInit{
@@ -30,6 +31,8 @@ export class EventoComponent implements OnInit{
     miembrosAgregados: Miembro[] = [];
     agregar_miembro: Miembro;
     miembros: Miembro[] =[];
+    options : {};
+    variable: any;
     constructor(private _router: Router, private _route: ActivatedRoute, private formBuilder: FormBuilder, public snackBar: MatSnackBar, private dialog: MatDialog){
         this.evento = new Evento({})
     }
@@ -126,6 +129,16 @@ export class EventoComponent implements OnInit{
 
 
     ngOnInit(){
+        ImagenService.froala().then(response => {
+            this.variable = response.data
+            this.options = {
+                placeholderText: 'Escribe aqui',
+                charCounterCount: false,
+                imageUploadURL: false,
+                theme: 'dark',
+                imageUploadToS3: this.variable
+                }
+        })
         !this.visible
         this._route.params.subscribe(params => {
             this.idEvento = +params['id'];

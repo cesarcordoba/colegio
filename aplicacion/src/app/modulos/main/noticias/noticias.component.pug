@@ -15,6 +15,7 @@
                 .etiqueta([style.backgroundColor]="noticia.color")
                     p {{noticia.tipo}}
                 .imagen
+                    img([src]="noticia.portada[0].link")
                 .texto
                     p {{noticia.introduccion}}
-                    h4 Leer mas
+                    a(mat-button (click)="mandarNoticia(noticia.id)") Leer mas

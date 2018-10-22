@@ -3,13 +3,18 @@
         .filtros
             .encabezado
                 h1 Filtros
-                .linea
-                p palabra clave
-                .linea
+                .linea-filtros
+                h4 Palabra clave
+                form
+                    mat-form-field
+                        input(matInput placeholder="palabra clave")
+                .linea-filtros
             .alfabetico
-                a(mat-button) TODOS
-                a(mat-button *ngFor="let letra of letras") {{letra.letra}}
+                h4 Alfabetico
+                a.boton-todo(mat-button) TODOS
+                a.boton-letra(mat-button *ngFor="let letra of letras") {{letra.letra}}
             .categorias
+                h4 Categorías
                 .exactas
                     p Ciencias Exactas
                 .artes
@@ -19,4 +24,25 @@
                 .ciencias-biologicas
                     p Ciencias Biologicas y de la salud
             .lista
-        .grid-miembros
+                mat-radio-group
+                    mat-radio-button(value="1") Todos
+                    mat-radio-button(value="2") Actuales
+                    mat-radio-button(value="3") Anteriores
+                .linea-filtros
+                .boton-busqueda
+                    button(mat-button) Restaurar busqueda                
+        .grid-miembros(*ngIf="mostrar===true")
+            .contenedor-grid
+                .miembros-repeat(*ngFor="let miembro of miembros")
+                    .miembros((click)="mandarAMiembro(miembro.id)")
+                        .imagen
+                            mat-spinner(*ngIf="!miembro.portada[0].link")
+                            img(*ngIf="miembro.portada[0].link", src='{{miembro.portada[0].link}}?')
+                        .linea-background
+                        .texto
+                            p {{miembro.nombre}}
+                            p {{miembro.fecha}}
+                            p {{miembro.categoria}}
+        button.regresar(mat-button *ngIf="mostrar===false" (click)="regresar()" style="margin-top: 21px;min-width: inherit;line-height: inherit;padding: inherit;")
+            mat-icon(style="color: white;") highlight_off
+        miembro(*ngIf="mostrar===false" [idMiembro] = "IdMiembro")

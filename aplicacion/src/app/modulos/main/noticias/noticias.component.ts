@@ -1,32 +1,29 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import {Noticia} from '../../../models/noticia.model';
+import {NoticiasService} from '../../../services/noticias.service'
 
 @Component({
   selector: 'noticias',
   templateUrl: './noticias.component.pug',
   styleUrls: ['./noticias.component.styl'],
+  providers: [NoticiasService],
   encapsulation: ViewEncapsulation.None
 })
 
 export class NoticiasComponent implements OnInit {
-    noticias = [{}];
+    noticias: Noticia[] = []
     constructor(private router: Router) { }
+
+    mandarNoticia(id){
+        this.router.navigate(['/noticias/' + id]);
+    }
 
     ngOnInit() {
 
-
-        this.noticias = [
-            {color:'#37c3ff', introduccion:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', tipo: 'institucion'},
-            {color: '#4ea502', introduccion:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', tipo: 'prensa'},
-            {color:'#a8004c', introduccion:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', tipo: 'actualidad'},
-            {color:'#37c3ff', introduccion:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', tipo: 'institucion'},
-            {color: '#4ea502', introduccion:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', tipo: 'prensa'},
-            {color:'#a8004c', introduccion:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', tipo: 'actualidad'},
-            {color:'#37c3ff', introduccion:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', tipo: 'institucion'},
-            {color: '#4ea502', introduccion:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', tipo: 'prensa'},
-            {color:'#a8004c', introduccion:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', tipo: 'actualidad'},
-        ]
-
+        NoticiasService.obtener()
+        .then(response => this.noticias = response.data.map(n => new Noticia(n)))
+        .then(() =>console.log(this.noticias))
     }
 
 }

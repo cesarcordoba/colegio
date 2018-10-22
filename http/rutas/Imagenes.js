@@ -10,5 +10,7 @@ route.route('/data/imagen/:id')
         .put(x.update)
         .delete(x.delete);
 
-module.exports = route;
+route.route('/data/imagenes/froala')
+        .get(x.froala);
 
+module.exports = route;

@@ -18,12 +18,15 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
+import { FullCalendarModule } from 'ng-fullcalendar';
+
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticias/noticia/noticia.component';
 import { MiembrosComponent } from './miembros/miembros.component';
 import { MiembroComponent } from './miembros/miembro/miembro.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { EventoComponent } from './eventos/evento/evento.component';
+import { InstitucionComponent } from './institucion/institucion.component';
 
 @NgModule({
 	imports: [
@@ -32,6 +35,7 @@ import { EventoComponent } from './eventos/evento/evento.component';
 	MainRoutingModule,
 	FormsModule,  ReactiveFormsModule,
 	MaterialModule,
+	FullCalendarModule,
 	SlickModule.forRoot(),
 	AgmCoreModule.forRoot({
 		apiKey: 'AIzaSyBqCAz2oy2ZHjc9_wAXqvbfyWoM725ICNk'
@@ -50,7 +54,8 @@ import { EventoComponent } from './eventos/evento/evento.component';
 		EventosComponent,
 		NoticiaComponent,
 		MiembroComponent,
-		EventoComponent
+		EventoComponent,
+		InstitucionComponent
 	],
 	entryComponents: [
 		LoginComponent

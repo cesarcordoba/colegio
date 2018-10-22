@@ -8,13 +8,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import { MatDialog } from '@angular/material'
 import { ConfirmDelDialogComponent } from '../../fragments/confirm-del-dialog/confirm-del-dialog.component'
-
+import { PortadaService } from '../../../../services/portada.service';
 
 @Component({
     selector: 'miembro',
     templateUrl: './miembro.component.pug',
     styleUrls: ['./miembro.component.styl'],
-    providers: [MiembrosService, CategoriasService]
+    providers: [MiembrosService, CategoriasService, PortadaService]
 })
 
 export class MiembroComponent implements OnInit{
@@ -28,6 +28,8 @@ export class MiembroComponent implements OnInit{
     agregar_categoria: Categoria;
     agregar = {Categoria:{nombre: null}, nombre: null};
     categoriasAgregadas : Categoria[] = [];
+    options : {}
+    variable: any;
     constructor(private _router: Router, private _route: ActivatedRoute, private formBuilder: FormBuilder, public snackBar: MatSnackBar, private dialog: MatDialog){
             this.miembro = new Miembro({})
 
@@ -96,6 +98,16 @@ export class MiembroComponent implements OnInit{
 
 
     ngOnInit(){
+        PortadaService.froala().then(response => {
+            this.variable = response.data
+            this.options = {
+                placeholderText: 'Escribe aqui',
+                charCounterCount: false,
+                imageUploadURL: false,
+                theme: 'dark',
+                imageUploadToS3: this.variable
+                }
+        })
         this._route.params.subscribe(params => {
             this.idMiembro = +params['id'];
             MiembrosService.one(+params['id'])

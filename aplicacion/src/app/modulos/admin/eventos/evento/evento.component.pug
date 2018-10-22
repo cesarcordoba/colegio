@@ -32,7 +32,7 @@
                         input(matInput formControlName="hora" [(ngModel)]="evento.hora" placeholder="Hora del Evento: p.e. 19:00 hr" required)
                     mat-form-field(class="input-layout")
                         label Descripcion:
-                        textarea([froalaEditor]
+                        textarea([froalaEditor]="options"
                             [(froalaModel)]="evento.descripcion" 
                             matInput name="descripcion" 
                             autocomplete="off" 

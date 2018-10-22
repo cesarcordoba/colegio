@@ -17,4 +17,9 @@ route.route('/data/unirMiembroxCategoria/:idMiembro/:idCategoria')
 route.route('/data/obtenerMiembroxCategoria/:idMiembro')
         .get(x.obtenerCategorias);
 
+route.route('/data/obtenerMiembrosFull')
+        .get(x.obtenerMiembrosFull);
+
+route.route('/data/obtenerEventos/:idMiembro')
+        .get(x.obtenerEventos);
 module.exports = route;

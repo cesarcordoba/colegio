@@ -1,5 +1,5 @@
 const db = require('../relaciones');
-var { miembro, categoria } = db;
+var { miembro} = db;
 
 var ex = module.exports = {};
 
@@ -29,7 +29,13 @@ ex.obtenerCategorias = (req, res, next) => miembro.findById(req.params.idMiembro
         include: ['Categoria']}))
     .then(response => res.status(200).jsonp(response));
 
-
 ex.removerDeCategoria = (req, res, next) => miembro.findById(req.params.idMiembro)
     .then(miembro => miembro.removeCategorias(req.params.idCategoria))
     .then(response => res.status(200).json(response));
+
+ex.obtenerMiembrosFull = (req, res, next) => miembro.findAll({ include: ['Categorias'] })
+    .then(response => res.status(200).jsonp(response));
+
+ex.obtenerEventos = (req, res, next) => miembro.findById(req.params.idMiembro)
+    .then(miembro => miembro.getEventos())
+    .then(response => res.status(200).jsonp(response));

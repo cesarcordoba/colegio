@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material'
 import { ConfirmDelDialogComponent } from '../fragments/confirm-del-dialog/confirm-del-dialog.component'
 import {NuevaNoticiaComponent} from '../noticias/nueva-noticia/nueva-noticia.component'
 import { Router } from '@angular/router'
+import { PortadaService } from '../../../services/portada.service';
 
 @Component({
     selector: 'noticias',
@@ -14,11 +15,17 @@ import { Router } from '@angular/router'
 })
 
 export class NoticiasComponent implements OnInit {
+    static variable: any;
     noticias: Noticia[] = []
 
     constructor(private _router: Router, private dialog: MatDialog){
         NoticiasService.obtener()
         .then(response => this.noticias = response.data.map(n => new Noticia(n)))
+    }
+
+    public static guardar(){
+        PortadaService.froala().then(response => this.variable = response.data)
+        return this.variable
     }
 
     verNoticia(id: number){

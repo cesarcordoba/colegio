@@ -40,4 +40,12 @@ export class MiembrosService {
         return axios.delete(this.apiUrl + '/data/unirMiembroxCategoria/' + idMiembro + '/' + idCategoria);
     }
 
+    static obtenerMiembrosFull(){
+        return axios.get(this.apiUrl + '/data/obtenerMiembrosFull');
+    }
+
+    static obtenerEventos(idMiembro){
+        return axios.get(this.apiUrl + '/data/obtenerEventos/' + idMiembro);
+    }
+
 }

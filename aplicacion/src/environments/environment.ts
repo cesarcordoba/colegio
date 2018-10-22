@@ -17,7 +17,7 @@ export const APILOCAL = {
 };
 
 export const AWSKEYS = {
-  accessKeyId: 'AKIAIPH________________________PSBELTG5QELAA',
-  secretAccessKey: 'ZK+UwZd6vl0t_______________________________BQff/jZ21dkJTJC37epdWTDP5uXt',
+  accessKeyId: 'AKIAIPHP__________________________SBELTG5QELAA',
+  secretAccessKey: 'ZK+UwZd6vl0tBQ__________________________________ff/jZ21dkJTJC37epdWTDP5uXt',
   region: 'us-east-1'
 }

@@ -29,11 +29,11 @@
                             mat-option(*ngFor="let tipo of tipos" [value]="tipo.nombre") {{tipo.nombre}}
                     mat-form-field(class="input-layout")
                         label Cuerpo de la noticia:
-                        textarea([froalaEditor]
+                        textarea([froalaEditor]="options"
                             [(froalaModel)]="noticia.descripcion" 
                             matInput name="descripcion" 
                             autocomplete="off" 
-                            rows="35" 
+                            rows="4" 
                             required)
                     .boton-guardar
                         button.saveEdicion(mat-button type="submit" matTooltip="Guardar Cambios")

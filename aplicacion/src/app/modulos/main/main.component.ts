@@ -66,7 +66,8 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 			{ path: '/login', label: 'Login', icon: 'airplanemode_active' },
 			{ path: '/noticias', label: 'Noticias'},
 			{ path: '/eventos', label: 'Eventos'},
-			{ path: '/miembros', label: 'Miembros'}
+			{ path: '/miembros', label: 'Miembros'},
+			{ path: '/institucion', label: 'Institucion'}
 		];
 	}
 

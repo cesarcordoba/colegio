@@ -1,0 +1,25 @@
+mat-spinner(*ngIf="mostrar===false")
+.miembro-content(*ngIf="mostrar===true")
+    .encabezado-miembro
+        .portada
+            img(src='{{ miembro.portada[0].link }}')
+        .info-titulo
+            .nombre-container
+                .nombre
+                    h1 {{miembro.nombre}}
+                    p Ingreso en {{miembro.fecha}}
+                .linea
+                .categoria
+                    h1 {{miembro.categoria}}
+            .eventos
+                p(*ngFor="let evento of miembro.eventos") {{evento.nombre}}
+    .descripcion-miembro
+        p([innerHtml] = "miembro.descripcion")
+    .miembros-relacionados
+        //- .slider-novedades
+        //-     ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfigRelacionados')
+        //-         .slide(*ngFor='let relacionado of relacionados' ngxSlickItem)
+        //-             .imagen-portada
+        //-                 img(src='{{ relacionado.img }}')
+        //-             h3 {{relacionado.nombre}}
+        //-             p {{relacionado.fecha}} 

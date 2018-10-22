@@ -28,4 +28,8 @@ export class ImagenService {
     static eliminar(id: number){
         return axios.delete(this.apiUrl + '/data/imagen/' + id);
     }
+
+    static froala(){
+        return axios.get(this.apiUrl + '/data/imagenes/froala' );
+    }
 }

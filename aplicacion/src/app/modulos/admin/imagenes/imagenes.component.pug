@@ -5,13 +5,21 @@ mat-card.imagenes-container
         mat-tab-group(dynamicHeight)
             mat-tab(label="Portadas")
                 mat-card.portadas-content
-                    mat-select(placeholder="Destino de la imagen...")
-                        mat-option(*ngFor="let destino of destinos" [value]="destino.id" (click)="subdestino(destino.id)") {{destino.nombre}}
+                    mat-select(placeholder="Destino de las portadas...")
+                        mat-option(*ngFor="let destino of destinos" [value]="destino.id" (click)="subdestinoPortadas(destino.id)") {{destino.nombre}}
                     mat-select(*ngIf="visible" placeholder="Elige una opcion ..." style="margin-top: 4vh;")
-                        mat-option(*ngFor="let subdestino of subdestinos" [value]="subdestino.id") {{subdestino.nombre}}
+                        mat-option(*ngFor="let subdestino of subdestinos" [value]="subdestino.id" (click)="cargaPortada(subdestino.id)") {{subdestino.nombre}}
+                    button(mat-button *ngIf="verDropify" (click)="subirArchivoPortadas()" style="margin-top: 4vh;") Guardar portada
             mat-tab(label="Imagenes")
                 mat-card.imagenes-content
                     mat-select(placeholder="Destino de la imagen...")
                         mat-option(*ngFor="let destinoImagen of destinosImagenes" ) {{destinoImagen.nombre}}
-        dropify([(ngModel)]="file" (remove)="file=null")
-                        
+                    button(mat-button *ngIf="verDropify" (click)="subirArchivo()" style="margin-top: 4vh;") Guardar imagen
+        dropify(*ngIf="verDropify" [(ngModel)]="file" (remove)="file=null")
+        .imagen(*ngFor="let imagen of imagenesAll")
+            img(*ngIf="verDropify" [src]="imagen.link")
+        //-button(mat-button *ngIf="verDropify" (click)="subirArchivo()") 
+            mat-icon save
+        //-button(mat-button *ngIf="verDropify" (click)="eliminarArchivo()") 
+            mat-icon delete
+                    

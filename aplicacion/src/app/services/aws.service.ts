@@ -3,7 +3,12 @@ import * as S3 from 'aws-sdk/clients/s3';
 import { AWSKEYS } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
-@Injectable()   
+interface ArchivoSubido {
+    link: string,
+    key: string,
+}
+
+@Injectable()
 export class AWSService {
 
     private FOLDER: string;
@@ -14,7 +19,7 @@ export class AWSService {
         region: AWSKEYS.region
     });
 
-    private linkUpload: Observable<string | boolean>;
+    private linkUpload: Observable<ArchivoSubido | boolean>;
     private borradoArchivo: Observable< boolean>;
 
     constructor(){
@@ -22,11 +27,11 @@ export class AWSService {
         this.bucketName = 'bull-imagenes';
     }
 
-    subirArchivo(archivo): Observable<string | boolean>{
-
+    subirArchivo(archivo, bucket:string, carpeta:string):Observable<ArchivoSubido | boolean>{
+        let archivito: ArchivoSubido;
         const params: S3.PutObjectRequest = {
-            Bucket: this.bucketName,
-            Key: this.FOLDER + archivo.name,
+            Bucket: bucket,
+            Key: carpeta + archivo.name,
             Body: archivo,
             ACL: 'public-read'
         }
@@ -39,19 +44,20 @@ export class AWSService {
                     observar.next(false)
                     return false;
                   }
-             
+
                   console.log('Successfully uploaded file.', data);
-                  observar.next(data.Location)
+                  archivito = {link: data.Location, key: data.Key}
+                  observar.next(archivito)
                   return true;
             })
         })
         return this.linkUpload
     }
 
-    borrarArchivo(nombreArvhi: string): Observable< boolean>{
+    borrarArchivo(nombreArvhi: string, bucket:string, carpeta:string): Observable< boolean>{
         const params: S3.PutObjectRequest = {
-            Bucket: this.bucketName,
-            Key: this.FOLDER + nombreArvhi
+            Bucket: bucket,
+            Key: carpeta + nombreArvhi
         }
 
         this.borradoArchivo = new Observable(observar => {
@@ -63,11 +69,32 @@ export class AWSService {
                 }
 
                 observar.next(data.DeleteMarker)
-                
+
             })
         })
 
         return this.borradoArchivo;
     }
+    // borrarArchivo(nombreArvhi: string): Observable< boolean>{
+    //     const params: S3.PutObjectRequest = {
+    //         Bucket: this.bucketName,
+    //         Key: this.FOLDER + nombreArvhi
+    //     }
+    //
+    //     this.borradoArchivo = new Observable(observar => {
+    //         this.bucket.deleteObject(params, (err, data)=> {
+    //             if(err){
+    //                 console.log('There was an error uploading your file: ', err);
+    //                 observar.next(false)
+    //                 return false;
+    //             }
+    //
+    //             observar.next(data.DeleteMarker)
+    //
+    //         })
+    //     })
+    //
+    //     return this.borradoArchivo;
+    // }
 
 }

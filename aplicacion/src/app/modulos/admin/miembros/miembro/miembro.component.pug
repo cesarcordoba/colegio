@@ -22,11 +22,11 @@
                         input(matInput formControlName="fecha" placeholder="Fecha de ingreso(año)" [(ngModel)]="miembro.fecha" required)
                     mat-form-field(class="input-layout")
                         label Acerca de:
-                        textarea([froalaEditor]
+                        textarea([froalaEditor]="options"
                             [(froalaModel)]="miembro.descripcion" 
                             matInput name="descripcion" 
                             autocomplete="off" 
-                            rows="35" 
+                            rows="4" 
                             required)
                     .boton-guardar
                         button.saveEdicion(mat-button type="submit" matTooltip="Guardar Cambios")

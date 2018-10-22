@@ -8,11 +8,11 @@
         .menu-navegacion
             a.nav(mat-button style="min-width: 70px !important;" [routerLink]="navLinks[2].path" [routerLinkActive]="['active']") Noticias
             .linea
-            a.nav(mat-button style="min-width: 70px !important;") Agenda
+            a.nav(mat-button style="min-width: 70px !important;" [routerLink]="navLinks[3].path" [routerLinkActive]="['active']") Agenda
             .linea
             a.nav(mat-button style="min-width: 70px !important" [routerLink]="navLinks[4].path" [routerLinkActive]="['active']") Miembros
             .linea
-            a.nav(mat-button) La institución
+            a.nav(mat-button [routerLink]="navLinks[5].path" [routerLinkActive]="['active']") La institución
             .linea
             a.nav(mat-button) Centro de informacion
     .header-derecha

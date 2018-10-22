@@ -8,7 +8,6 @@ import {Router, NavigationEnd} from "@angular/router";
 })
 export class AppComponent implements OnInit {
   title = 'app';
-
   constructor(public router: Router) {
 
   }

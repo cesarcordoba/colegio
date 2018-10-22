@@ -1,4 +1,4 @@
-import { Component, Input, Output, ElementRef, forwardRef, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, ElementRef, forwardRef, OnInit, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { element } from 'protractor';
 declare var $: any
@@ -12,7 +12,8 @@ declare var $: any
           useExisting: forwardRef(() => DropifyComponent),
           multi: true
       }
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
   })
 
   export class DropifyComponent implements ControlValueAccessor, OnInit{
@@ -27,7 +28,7 @@ declare var $: any
        this.propagateChange = fn;
    }
    registerOnTouched() { }
-  
+
    changeListener($event): void {
        // debugger; // uncomment this for debugging purposes
        this.readThis($event.target);
@@ -36,7 +37,7 @@ declare var $: any
        // debugger; // uncomment this for debugging purposes
        var file: File = inputValue.files[0];
        var myReader: FileReader = new FileReader();
-  
+
        myReader.onloadend = (e) => {
            this.propagateChange(file);
            this.selectedFileName = file.name;
@@ -47,10 +48,10 @@ declare var $: any
    ngOnInit() {
         var drEvent = $('.dropify').dropify({
             messages: {
-                'default': 'Arrastra la imagen aqui',
+                'default': 'Arrastra la imagen aqui ó da click',
                 'replace': 'Arrastra y remplaza la imagen',
                 'remove':  'Quitar',
-                'error':   'Ooops, something wrong happended.'
+                'error':   'Ooops, algo salio mal.'
             }
         });
 

@@ -1,0 +1,18 @@
+.institucion-container
+    .institucion-content
+        .linea-tiempo
+            ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfig', (afterchange)='afterChange($event)')
+                .slide(*ngFor='let slide of slides' ngxSlickItem)
+                    .informacion-texto
+                        .texto
+                            h1 {{slide.nombre}}
+                            h4 Fundacion de El Colegio de Mexico
+                            p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit sunt qui sed facilis perspiciatis repellat deleniti, obcaecati odit delectus blanditiis, inventore magnam aliquid error sapiente cumque. Accusamus voluptate quisquam numquam.
+                        .imagen-lineaTiempo
+                            .imagen-anio
+        .linea-tiempo-horizontal
+            .barra-tiempo
+            .contenedor-linea-tiempo
+                .fecha(*ngFor="let fecha of fechas")
+                    .circulo
+                    p {{fecha.fecha}}
