@@ -8,7 +8,11 @@ router.get("/", function(req, res) {
     res.render("index");
 })
 
- router.get("/admin/:url", function(req, res) {
+router.get("/login", function(req, res) {
+    res.render("index");
+})
+
+router.get("/admin/:url", function(req, res) {
     var page = req.params.url
     res.render("index");
 })

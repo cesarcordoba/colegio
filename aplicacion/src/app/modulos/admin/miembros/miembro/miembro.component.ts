@@ -30,12 +30,15 @@ export class MiembroComponent implements OnInit{
     categoriasAgregadas : Categoria[] = [];
     options : {}
     variable: any;
+    checked: boolean = false;
+    color :string = 'warn'
     constructor(private _router: Router, private _route: ActivatedRoute, private formBuilder: FormBuilder, public snackBar: MatSnackBar, private dialog: MatDialog){
             this.miembro = new Miembro({})
 
     }
     mandarAEdicion(){
         this.visible = !this.visible;
+        this.miembro.activo === "activo" ? this.checked = true : this.checked = false;
     }
 
     submit(miembro){
@@ -44,6 +47,12 @@ export class MiembroComponent implements OnInit{
         .then(response => console.log(response.data))
         .then(response => !this.visible)
         this.snackBar.open("Guardado Correctamente", "cerrar", {duration: 1000});
+
+    }
+
+    activar(activado){
+        activado === true ? this.miembro.activo = "activo" : this.miembro.activo = "inactivo"
+        console.log(activado)
 
     }
 
@@ -111,8 +120,11 @@ export class MiembroComponent implements OnInit{
         this._route.params.subscribe(params => {
             this.idMiembro = +params['id'];
             MiembrosService.one(+params['id'])
-            .then(response => this.miembro = new Miembro(response.data))
-            .then(response => console.log(this.miembro))
+            .then(response => {
+                this.miembro = new Miembro(response.data)
+                this.miembro.activo === "activo" ? this.checked = true : this.checked = false;
+            })
+            
         })
 
         this.obtenerTodasCategorias();

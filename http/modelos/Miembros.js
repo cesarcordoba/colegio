@@ -3,7 +3,8 @@ module.exports = ({Sequelize, sequelize } = conector) =>
         id:{ type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
         nombre: Sequelize.STRING,
         fecha: Sequelize.STRING,
-        descripcion: Sequelize.TEXT
+        descripcion: Sequelize.TEXT,
+        activo: Sequelize.STRING
     },{
     	name : {
     		singular: 'miembro',

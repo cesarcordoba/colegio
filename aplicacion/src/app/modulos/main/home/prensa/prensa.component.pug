@@ -1,0 +1,7 @@
+.slider-prensa
+    ngx-slick.carousel(#slickmodal='slick-modal', [config]='slidePrensaConf', (afterchange)='afterChange($event)')
+        .slide(*ngFor='let prensa of prensas' ngxSlickItem)
+            .prensa
+                h1 {{prensa.nombre}}
+                p {{prensa.introduccion}}
+                a(mat-button (click)="mandarNoticia(prensa.id)") Leer mas

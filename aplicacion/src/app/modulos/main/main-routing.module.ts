@@ -6,6 +6,10 @@ import {RouterModule, Routes} from '@angular/router';
  */
 import {MainComponent} from './main.component';
 import { HomeComponent } from './home/home.component';
+import { ActualidadComponent } from './home/actualidad/actualidad.component';
+import { InstitucionesComponent } from './home/institucion/instituciones.component';
+import { PrensaComponent } from './home/prensa/prensa.component';
+
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from '../../guards/auth.guard';
 import { AuthService } from '../../services/auth.service';
@@ -27,7 +31,21 @@ const main_routers: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        children : [
+          {
+            path: 'instituciones',
+            component: InstitucionesComponent
+          },
+          {
+            path: 'actualidad',
+            component: ActualidadComponent
+          },
+          {
+            path: 'prensa',
+            component: PrensaComponent
+          }
+        ]
       },
       {
         path: 'login',

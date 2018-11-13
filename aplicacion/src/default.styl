@@ -3,3 +3,9 @@ tablet = '(min-width: 768px) and (max-width : 1000px)'
 chica = '(min-width: 1000px) and (max-width : 1200px)'
 mediana = '(min-width: 1000px) and (max-width : 1299px)'
 grande = '(min-width: 1300px)'
+
+transition(duracion, delay)
+	-webkit-transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+	transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+	-webkit-transition-delay delay ease-in-out
+	transition-delay delay ease-in-out

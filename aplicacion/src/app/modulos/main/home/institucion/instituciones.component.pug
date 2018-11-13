@@ -1,0 +1,7 @@
+.slider-institucion
+    ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideInstitucionConf', (afterchange)='afterChange($event)')
+        .slide(*ngFor='let institucion of instituciones' ngxSlickItem)
+            .institucion
+                h1 {{institucion.nombre}}
+                p {{institucion.introduccion}}
+                a(mat-button (click)="mandarNoticia(institucion.id)") Leer mas

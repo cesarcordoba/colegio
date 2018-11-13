@@ -12,6 +12,8 @@
                 p {{miembro.nombre}}
                 h4 Fecha de Ingreso:
                 p {{miembro.fecha}}
+                h4 Estatus actual:
+                p {{miembro.activo}}
                 h4 Acerca de:
                 p([innerHtml] = "miembro.descripcion")
             .form(*ngIf="visible")
@@ -20,6 +22,8 @@
                         input(matInput formControlName="nombre" placeholder="Nombre" [(ngModel)]="miembro.nombre" required)
                     mat-form-field(class="input-layout")
                         input(matInput formControlName="fecha" placeholder="Fecha de ingreso(año)" [(ngModel)]="miembro.fecha" required)
+                    p Inactivo/Activo
+                    mat-slide-toggle((change)="activar($event.checked)" [checked]="checked" [color]="color")
                     mat-form-field(class="input-layout")
                         label Acerca de:
                         textarea([froalaEditor]="options"

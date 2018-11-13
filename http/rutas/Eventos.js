@@ -23,4 +23,7 @@ route.route('/data/unirEventosxMiembros/:idEvento/:idMiembro')
 
 route.route('/data/obtenerEventosxMiembros/:idEvento')
         .get(x.obtenerMiembros);
+
+route.route('/data/eventos/filtro')
+        .put(x.filtro);
 module.exports = route;

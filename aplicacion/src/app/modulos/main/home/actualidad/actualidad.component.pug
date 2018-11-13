@@ -1,0 +1,7 @@
+.slider-actualidad
+    ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideActualidadConf', (afterchange)='afterChange($event)')
+        .slide(*ngFor='let actualidad of actualidades' ngxSlickItem)
+            .actualidad
+                h1 {{actualidad.nombre}}
+                p {{actualidad.introduccion}}
+                a(mat-button (click)="mandarNoticia(actualidad.id)") Leer mas

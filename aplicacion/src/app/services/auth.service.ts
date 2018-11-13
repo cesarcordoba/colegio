@@ -15,7 +15,6 @@ export class AuthService {
     private redirecionarA = new BehaviorSubject<string>('/');
 
     constructor(private router: Router) {
-        console.log('Auth contructor')
         localStorage.getItem("token") != null ?
             (this.isLoginSubject.next(true),this.validarToken(localStorage.getItem("token")) )
             : this.isLoginSubject.next(false);
@@ -50,7 +49,6 @@ export class AuthService {
         return this.usuarioSubject.asObservable()
             .first()
             .map(user => {
-                console.log(user)
                 if (user && user.getTipo() === "admin") {
                     return true
                 }

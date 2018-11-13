@@ -3,12 +3,12 @@
         .home-container
             .slider
                 ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfig', (afterchange)='afterChange($event)')
-                    .slide(*ngFor='let slide of slides' ngxSlickItem)
-                        img(src='{{ slide.img }}', height='100%', width='100%')
+                    .slide(*ngFor='let evento of eventos' ngxSlickItem)
+                        //-img(src='{{ evento?.portada[0].link}}')
             .barrita-gris
-                button(mat-button) BOLETIN
+                button.boletin(mat-button) BOLETIN
                     mat-icon email
-                button(mat-button) RECORRIDO VIRTUAL
+                button.reco-virtual(mat-button) RECORRIDO VIRTUAL
             .home-content
                 .home-centro
                     .noticias-container
@@ -18,27 +18,35 @@
                             .imagen
                                 img(src="http://placehold.it/350x150/000000")
                             .noticias
-                                .cabecera
-                                    .tipos
-                                        mat-tab-group(dynamicHeight)
-                                            mat-tab(label="Institución")
-                                                mat-card.intitucion-content
-                                                    h4 Noticias de Institución
-                                            mat-tab(label="Actualidad")
-                                                mat-card.actualidad-content
-                                                    h4 Noticias de Actualidad
-                                            mat-tab(label="Prensa")
-                                                mat-card.prensa-content
-                                                    h4 Noticias de Prensa
-                                    .busqueda
-                                        mat-icon search 
-                                        autocomplete(style="width: 100%;")
+                                .cabecera-noticias
+                                    .barra-navegacion
+                                        .institucion((click)="cambiar(1)")
+                                            a.btn-nav(mat-button style="min-width: inherit;line-height: inherit;padding: inherit;") Institucion
+                                        .actualidad((click)="cambiar(2)")
+                                            a.btn-nav(mat-button style="min-width: inherit;line-height: inherit;padding: inherit;") Actualidad
+                                        .prensa((click)="cambiar(3)")
+                                            a.btn-nav(mat-button style="min-width: inherit;line-height: inherit;padding: inherit;") Prensa
+                                    .busqueda-noticias
+                                        mat-icon search
+                                        mat-form-field
+                                            input(matInput placeholder="Ingrese palabras claves" [matAutocomplete]="auto" [formControl]="filtroCtrl")
+                                            mat-autocomplete(#auto='matAutocomplete')
+                                                mat-option(*ngFor='let item of filteredItems | async', [value]='item.nombre' (click)="eventClick(item)")
+                                                    span {{ item.nombre }}
+                                .info-noticias
+                                    instituciones(*ngIf="valor===1")
+                                    actualidad(*ngIf="valor===2")
+                                    prensa(*ngIf="valor===3")
                         .grid-noticias
                             .slider-grid
                                 ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfigGrid')
-                                    .slide(*ngFor='let slideGrid of slidesGrids' ngxSlickItem)
-                                        img(src='{{ slideGrid.img }}' style="height: 150px; width: 100%;")
-                                        h3 {{slideGrid.introduccion}}
+                                    .slide(*ngFor='let noticia of noticias' ngxSlickItem)
+                                        .noticia
+                                            .imagen-content
+                                                img(src="http://placehold.it/350x150/000000")
+                                            //-img([src]="noticia?.portada[0].link")
+                                            .texto
+                                                h3 {{noticia.nombre}}
                     .transmiciones
                         .seccion-derecha
                             .slider-vivo
@@ -46,11 +54,11 @@
                                     .slide(*ngFor='let slideVivo of slidesVivos' ngxSlickItem)
                                         h3 {{slideVivo.introduccion}}
                         .seccion-izquierda
-                            img(src="http://placehold.it/350x150/111111")
+                            img(src="assets/images/transmiciones.png")
                     .linea-separador
                     .acervo-cultural
                         .imagen-derecha
-                            img(src="http://placehold.it/350x150/000000")
+                            img(src="assets/images/recomendaciones.png")
                         .texto-centro
                             .texto
                                 h1 Acervo Cultural
@@ -58,16 +66,16 @@
                             .botones
                                 .biblioteca
                                     img(src="assets/images/colnal_biblioteca.png")
-                                    button(mat-button) Biblioteca
+                                    button(mat-button style="min-width: inherit;line-height: inherit;padding: inherit;margin-left: 10px;") Biblioteca
                                 .fonoteca
                                     img(src="assets/images/colnal_fonoteca.png")
-                                    button(mat-button) Fonoteca
+                                    button(mat-button style="min-width: inherit;line-height: inherit;padding: inherit;margin-left: 10px;") Fonoteca
                                 .videoteca
                                     img(src="assets/images/colnal_videoteca.png")
-                                    button(mat-button) Videoteca
+                                    button(mat-button style="min-width: inherit;line-height: inherit;padding: inherit;margin-left: 10px;") Videoteca
                         .parte-izquierda
                             .imagen
-                                img(src="http://placehold.it/350x150/666666")
+                                img(src="assets/images/recomendacionesCI.png")
                             .recomedaciones
                                 h1 Recomendaciones C.I.
                         
@@ -80,6 +88,8 @@
                             .lista
                                 mat-list
                                     mat-list-item(*ngFor="let novedad of novedades")
+                                        .imagen-lista
+                                            img(src='{{ novedad.img }}')
                                         .nombre
                                             h3 {{novedad.nombre}}
                                         mat-divider
@@ -96,22 +106,31 @@
                     .recorridos
                         .recorridos-virtual
                             .nombre
-                                h1 RECORRIDO VIRTUAL
+                                h1 Recorrido Virtual
                                 p Conoce de cerca las instalaciones
                             .video
-                                .triangulo
+                                img(src="assets/images/video.png")
                         .seccion-izquierda
                             .tweets-container
-                                .tweets-content
-                                    img(src="http://placehold.it/350x150/111111")
-                            .boletin-semanal
-                                h1 BOLETIN SEMANAL
-                                p suscribete a nuestro boletin de noticias solbre el colegio
-                                .suscripcion
-                                    autocomplete(style="width: 100%;")
-                                    button.suscribete(mat-button) SUSCRIBETE
-                                
+                            .boletin-home-container
+                                .boletin-home-content
+                                    h1 BOLETIN SEMANAL
+                                    p suscribete a nuestro boletin de noticias solbre el colegio
+                                    //-form([formGroup]="form" (ngSubmit)="submit(correo)" novalidate)
+                                        input(formControlName="correo" (ngModel)="correo.nombre" placeholder="Escribe tu correo electronico")
+                                        button.boton-suscribir(mat-button type="submit") SUSCRIBETE
+                                        input(placeholder="Escribe tu correo electronico" [(ngModel)]="correo.correo")
                 .home-lateral
                     .titulo
                         h4 AGENDA
                         .linea-titulo-agenda
+                    .lista-agenda
+                        mat-list
+                            mat-list-item(*ngFor="let evento of eventos" style="height: 180px")
+                                .centro-agenda
+                                    .titulo-agenda
+                                        .circulito([style.backgroundColor]="evento.color")
+                                        p {{evento.fecha | date: 'mediumDate'}} - {{evento.hora}}
+                                    h4 {{evento.nombre}}
+                                    a.btn-ver(mat-button style="min-width: inherit;line-height: inherit;padding: inherit;" (click)="mandarEvento(evento.id)") Ver
+                                mat-divider

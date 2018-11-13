@@ -6,6 +6,7 @@ import { transition, trigger, query, style, animate, group } from '@angular/anim
 import { Usuario } from '../../models/usuario.model';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs/Subscription';
+import { InicioSesionComponent } from './home/sesion/sesion.component';
 
 @Component({
 	selector: 'app-main',
@@ -55,6 +56,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 	loading = false;
 	usuario: Usuario;
 	subscription: Subscription;
+	muestra : boolean = true; 
 
 	constructor(private router: Router, private dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private us: AuthService) {
 		this.usuario = new Usuario({})
@@ -77,6 +79,21 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	salir() {
 		this.us.salir();
+	}
+
+	abrirSesion(){
+		this.dialog.open(InicioSesionComponent ,{
+            width: '455px',
+            height: '222px'
+		}).afterClosed().subscribe(result => {
+			this.muestra = result
+			console.log(this.muestra)
+		});
+	}
+
+	cerrarSesion(){
+		this.us.salir();
+		this.muestra = true;
 	}
 
 	ngAfterViewInit() {

@@ -1,0 +1,64 @@
+.slider-institucion
+    height 235px
+    .carousel
+        height 235px
+        .slick-list
+            height 235px
+            .slick-track
+                height 235px
+                .slick-slide
+                    display flex
+                    justify-content center
+                    align-items center
+                    &:focus
+                        outline 0px
+                    .institucion
+                        height 235px
+                        padding 16px
+                        h1
+                            color white
+                            font-size 16px
+                        p
+                            color white
+                            font-size 12px
+                        a
+                            span
+                                font-size 11px
+                                color white
+                            min-width 0px
+                            line-height 0px
+                            padding 0px
+                            text-decoration underline
+                            text-decoration-color white
+        button.slick-prev
+            left inherit !important
+            right 70%
+            top 84%
+            z-index 1
+            width 35px
+            height 35px
+            &:before
+                font-family inherit
+                content '‹'
+                font-size 35px
+        button.slick-next
+            right inherit !important
+            left 70%
+            top 84%
+            width 35px
+            height 35px
+            &:before
+                font-family inherit
+                content '›'
+                font-size 35px
+        .slick-dots
+            bottom 20px
+            .slick-active
+                button
+                    &:before
+                        color white
+                        font-size 8px
+            button
+                &:before
+                    color darkgray
+                    font-size 8px

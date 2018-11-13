@@ -15,6 +15,10 @@ import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 
 import { HomeComponent } from './home/home.component';
+import { InicioSesionComponent } from './home/sesion/sesion.component';
+import { ActualidadComponent } from './home/actualidad/actualidad.component';
+import { InstitucionesComponent } from './home/institucion/instituciones.component';
+import { PrensaComponent } from './home/prensa/prensa.component';
 import { LoginComponent } from './login/login.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
@@ -47,6 +51,10 @@ import { InstitucionComponent } from './institucion/institucion.component';
 	declarations: [
 		MainComponent,
 		HomeComponent,
+		ActualidadComponent,
+		InstitucionesComponent,
+		PrensaComponent,
+		InicioSesionComponent,
 		LoginComponent,
 		UsuarioComponent,
 		NoticiasComponent,
@@ -58,7 +66,8 @@ import { InstitucionComponent } from './institucion/institucion.component';
 		InstitucionComponent
 	],
 	entryComponents: [
-		LoginComponent
+		LoginComponent,
+		InicioSesionComponent
 	]
 })
 export class MainModule { }

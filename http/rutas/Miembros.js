@@ -22,4 +22,13 @@ route.route('/data/obtenerMiembrosFull')
 
 route.route('/data/obtenerEventos/:idMiembro')
         .get(x.obtenerEventos);
+
+route.route('/data/miembros/paginacion/:items/:paginas')
+        .get(x.paginacion);
+
+route.route('/data/miembros/filtroXletra')
+        .post(x.filtroXletra);
+
+route.route('/data/miembros/filtro')
+        .put(x.filtro);
 module.exports = route;

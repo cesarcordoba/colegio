@@ -27,16 +27,16 @@ app.use(function(req, res, next) {
 
 var routes = require('./http/rutas');
 
-var avatares = require('./http/rutas/Avatares');
 var categorias = require('./http/rutas/Categorias');
 var eventos = require('./http/rutas/Eventos');
 var imagenes = require('./http/rutas/Imagenes');
-var llaves = require('./http/rutas/Llaves');
 var miembros = require('./http/rutas/Miembros');
 var noticias = require('./http/rutas/Noticias');
 var portadas = require('./http/rutas/Portadas');
 var tags = require('./http/rutas/Tags');
 var usuarios = require('./http/rutas/Usuarios');
+var autentificacion = require('./http/rutas/Autentificacion');
+
 // var imagenes = require('./http/routes/Imagen');
 // var usuario = require('./http/routes/Usuario');
 // var Auth = require('./http/rutas/Autentificacion')
@@ -75,16 +75,15 @@ app.use(passport.session());
 morgan('combined', {skip: function (req, res) { return res.statusCode < 400 }});
 
 app.use('/', routes);
-app.use('/', avatares);
 app.use('/', categorias);
 app.use('/', eventos);
 app.use('/', imagenes);
-app.use('/', llaves);
 app.use('/', miembros);
 app.use('/', noticias);
 app.use('/', portadas);
 app.use('/', tags);
 app.use('/', usuarios);
+app.use('/', autentificacion);
 
 // app.use('/', imagenes);
 // app.use('/', usuario);

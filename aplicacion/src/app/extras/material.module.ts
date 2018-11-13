@@ -27,7 +27,8 @@ import {
 	MatCheckboxModule,
 	MatTabsModule,
 	MatRadioModule,
-	MatProgressBarModule
+	MatProgressBarModule,
+	MatExpansionModule
 } from '@angular/material';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 @NgModule({
@@ -59,7 +60,8 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 	MatTabsModule,
 	MatProgressBarModule,
 	ScrollDispatchModule,
-	MatRadioModule
+	MatRadioModule,
+	MatExpansionModule
   ],
   exports: [
     MatMenuModule,
@@ -90,6 +92,7 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 	MatTabsModule,
 	MatProgressBarModule,
 	ScrollDispatchModule,
+	MatExpansionModule
   ]
 })
 export class MaterialModule {}

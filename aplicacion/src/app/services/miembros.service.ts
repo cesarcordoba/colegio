@@ -48,4 +48,16 @@ export class MiembrosService {
         return axios.get(this.apiUrl + '/data/obtenerEventos/' + idMiembro);
     }
 
+    static paginacion(items, pagina){
+        return axios.get(this.apiUrl + '/data/miembros/paginacion/' + items + '/' + pagina);
+    }
+
+    static filtroXletra(letra){
+        return axios.post(this.apiUrl + '/data/miembros/filtroXletra', letra);
+    }
+
+    static filtro(peticion){
+        return axios.put(this.apiUrl + '/data/miembros/filtro', peticion);
+    }
+
 }

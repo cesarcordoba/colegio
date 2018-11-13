@@ -1,8 +1,65 @@
-h1 Eventos
-a((click)="loadevents()") loadevents
-p Display event : {{displayEvent | json}}
-.div(*ngIf="calendarOptions")
-    ng-fullcalendar#ucCalendar([options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
-        (eventResize)="updateEvent($event.detail)" (dayClick)="dayClick($event.detail)" (clickButton)="clickButton($event.detail)" [(eventsModel)]="events")
-//- .div(*ngIf="calendarOptions")
-//-     ng-fullcalendar#ucCalendar([options]="calendarOptions" [(eventsModel)]="events")
+.eventos-container
+    .eventos-content
+        .filtros
+            .encabezado
+                h1 Filtros
+                h4 Palabra clave
+                autocomplete([array] = "eventos" (selectItem)="filtroNombre($event.nombre)")
+            .categorias
+                h4 Categorías
+                .arriba-categorias
+                    .exactas((click)="filtrosXcategoria(1)")
+                        img(src="assets/images/colnal_ciencias exactas.png")
+                        p Ciencias Exactas
+                    .artes((click)="filtrosXcategoria(2)")
+                        img(src="assets/images/colnal_artes y letras.png")
+                        p Artes y Letras
+                .abajo-categorias((click)="filtrosXcategoria(3)")
+                    .ciencias-sociales
+                        img(src="assets/images/colnal_ciencias sociales.png")
+                        p Ciencias Sociales y Humanidades
+                    .ciencias-biologicas((click)="filtrosXcategoria(4)")
+                        img(src="assets/images/colnal_ciencias biologicas.png")
+                        p Ciencias Biologicas y de la salud
+                .circulo
+            .linea-filtros
+            .boton-busqueda
+                button.btn-bus(mat-button style="line-height: 25px" (click)="restaurarTodo()") Restaurar búsqueda
+        .calendario
+            .div(*ngIf="calendarOptions")
+                ng-fullcalendar#ucCalendar([options]="calendarOptions" (eventClick)="eventClick($event.detail)"
+                    (eventResize)="updateEvent($event.detail)" (dayClick)="dayClick($event.detail)" (clickButton)="clickButton($event.detail)" [(eventsModel)]="events")
+        .panel-derecho
+            .slider
+                ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfig', (afterchange)='afterChange($event)')
+                    .slide(*ngFor='let eventoSlider of eventosSlider' ngxSlickItem)
+                        .contenedor-slider
+                            .arriba
+                                p {{eventoSlider.start | date: 'longDate'}}
+                            .abajo
+                                .nombre-eventoSlider
+                                    p {{eventoSlider.title}}
+                       
+            .proximos
+                .titulo
+                    h3 Eventos cercanos a esta fecha:
+                    h2 25 Noviembre 2018
+                .nombre-evento
+                    img(src="assets/images/colnal_ciencias biologicas 2.png")
+                    h1 Humbolt en Mexico, la mirada del explorador | Documental
+                .informacion-evento
+                    .info-basica
+                        .nombre
+                            p José Sarukhán kermez - miembro de El Colegio Nacional
+                        .hora
+                            mat-icon(style="height:inherit;width:inherit;font-size:16px;opacity:0.6") query_builder
+                            p 18:00 h
+                        .ubicacion
+                            mat-icon(style="height:inherit;width:inherit;font-size:16px;opacity:0.6") location_on
+                            p Donceles 104, Centro Historico, Ciudad de México
+                        .saber-mas
+                            mat-icon(style="height:inherit;width:inherit;font-size:16px;opacity:0.6") add
+                            p Saber más
+                    .imagen
+
+

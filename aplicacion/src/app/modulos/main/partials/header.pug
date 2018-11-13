@@ -17,6 +17,38 @@
             a.nav(mat-button) Centro de informacion
     .header-derecha
         .menu-oculto
-            mat-icon notifications
-            button.menu(mat-button) Menu 
+            a.iniciar-sesion(mat-button *ngIf="muestra === true" (click)="abrirSesion()")
+                mat-icon input
+            a.notificaciones(mat-button *ngIf="muestra === false")
+                mat-icon notifications
+            a.usuario(mat-button *ngIf="muestra === false" [matMenuTriggerFor]="menu")
+                mat-icon account_circle
+            mat-menu(#menu="matMenu")
+                button(mat-menu-item (click)="cerrarSesion()") 
+                    mat-icon meeting_room
+                    span cerrar sesion
+            a.menu(mat-button [matMenuTriggerFor]="menu2") Menu 
                 mat-icon menu
+            mat-menu(#menu2="matMenu")
+               .menuGrande
+                    .iconos-menu
+                        img(src="assets/images/colnal_iconos_facebook.png")
+                        img(src="assets/images/colnal_iconos_instagram.png")
+                        img(src="assets/images/colnal_iconos_twitter.png")
+                        img(src="assets/images/colnal_iconos_youtube.png")
+                    .botones-menu
+                        a(mat-menu-item) Home
+                        a(mat-menu-item) ¿Que es ECN?
+                        a(mat-menu-item) Miembros
+                        a(mat-menu-item) Actividades
+                        a(mat-menu-item) Centro de información
+                        a(mat-menu-item) Libros COLNAL
+                    .info-menu
+                        h3 Contactos
+                        .telefono
+                            p (55) 55 5789 4330
+                            mat-icon phone
+                        .correo
+                            p hola@colnal.mx
+                            mat-icon email
+                        //-#898989

@@ -28,4 +28,19 @@ route.route('/data/categorias/agregarCategoria/:idNoticia')
 
 route.route('/data/categorias/eliminarCategoriaNoticia/:idNoticia')
         .put(x.eliminarCategoriaNoticia);
+
+route.route('/data/obtenerSoloInstituciones')
+        .get(x.obtenerSoloInstituciones);
+
+route.route('/data/obtenerSoloActualidades')
+        .get(x.obtenerSoloActualidades);
+
+route.route('/data/obtenerSoloPrensa')
+        .get(x.obtenerSoloPrensa);
+
+route.route('/data/noticias/paginacion/:items/:paginas')
+        .get(x.paginacion);
+
+route.route('/data/noticias/filtro')
+        .put(x.filtro);
 module.exports = route;

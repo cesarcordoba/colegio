@@ -1,0 +1,13 @@
+form(class="conteneador" [formGroup]="loginForm" (ngSubmit)="login(loginForm)" novalidate)
+    mat-dialog-content.contenido
+        .usuario
+            h3 Nombre de Usuario
+            mat-form-field(class="input-layout")
+                input(matInput formControlName="usuario" autocomplete="off" required)
+        .password
+            h3 Contraseña
+            mat-form-field(class="input-layout")
+                input(matInput type="password" formControlName="contra" autocomplete="off" required)
+    mat-dialog-actions.botones
+        button(mat-button type="submit") Entrar
+        //-a(mat-button) ¿Ha olvidado su contraseña?

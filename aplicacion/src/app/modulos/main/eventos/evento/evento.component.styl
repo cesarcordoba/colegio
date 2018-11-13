@@ -1,0 +1,62 @@
+cabecera = #333333;
+letras = #c6c6c6;
+
+.evento-main-container
+    position relative
+    display flex
+    flex-direction row
+    justify-content center
+    align-items flex-start
+    min-height 100vh
+    .evento-main-content
+        position relative
+        width 1300px
+        margin-top 3vh
+        display flex
+        flex-direction row
+        .evento
+            width 1000px
+            margin-right 30px
+            .titulo-evento-container
+                background-color cabecera
+                display flex
+                flex-direction row
+                justify-content space-between
+                align-items center
+                .titulo
+                    h1
+                        font-size 18px
+                        color letras
+                        margin 0
+
+                .icono
+                    display flex
+                    justify-content center
+                    align-items center
+                    border-left 1px solid letras
+            .fecha
+                display flex
+                flex-direction row
+                align-items center
+                .circulo
+                    height 15px
+                    width 15px
+                    border-radius 20px
+                    margin-right 10px
+            .linea
+                height 1px
+                background-color #c6c6c6
+            .ubicacion
+                display flex
+                flex-direction row
+                align-items center
+            .descripcion-evento
+                text-align justify
+                p
+                    font-size 14px
+        .portada
+            width 300px
+            height 500px
+            img
+                height 100%
+                width 100%

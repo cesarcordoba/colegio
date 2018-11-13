@@ -1,1 +1,261 @@
 @import "~fullcalendar/dist/fullcalendar.min.css";
+@import "/../../../../default.styl";
+
+.eventos-container
+    position relative
+    margin-top 2vh
+    min-height 100vh
+    display flex
+    justify-content center
+    align-items flex-start
+    .eventos-content
+        position relative
+        //-width 1300px
+        width 80%
+        display flex
+        flex-direction row
+        .filtros
+            background-color #333333
+            width 270px
+            padding 10px
+            .encabezado
+                h1
+                    font-size 24px
+                    font-weight 100
+                    margin 0
+                    color #c9c9c9
+                h4
+                    color #c9c9c9
+                    font-size 17px
+                    font-weight 100
+                span
+                    label
+                        color white !important    
+                .mat-input-element
+                    color white !important
+            .categorias
+                h4
+                    font-size 15px
+                    color #c9c9c9
+                .circulo
+                    background-color #333
+                    height 20px
+                    border-radius 10px
+                    width 20px
+                    left 103px
+                    top 332px
+                    position absolute
+                .arriba-categorias
+                    display flex
+                    flex-direction row
+                    justify-content space-around
+                    align-items center
+                    .exactas, .artes
+                        display flex
+                        flex-direction column
+                        align-items center
+                        justify-content center
+                        width 50%
+                        cursor pointer
+                        p
+                            font-size 11px
+                            color #c9c9c9
+                            text-align center
+                            font-weight 100
+                    .exactas
+                        border-right 1px solid rgba(121,121,121,.9)
+                        border-bottom 1px solid rgba(121,121,121,.9)
+                .abajo-categorias
+                    display flex
+                    flex-direction row
+                    justify-content center
+                    align-items center
+                    .ciencias-sociales, .ciencias-biologicas
+                        display flex
+                        flex-direction column
+                        align-items center
+                        justify-content space-around
+                        width 50%
+                        cursor pointer
+                        p
+                            font-size 11px
+                            color #c9c9c9
+                            text-align center
+                            font-weight 100
+                    .ciencias-biologicas
+                        border-top 1px solid rgba(121,121,121,.9)
+                        border-left 1px solid rgba(121,121,121,.9)
+            .linea-filtros
+                height 0.8px
+                background-color #c9c9c9
+                width 100%
+                opacity 0.2
+                margin-top 30px
+            .boton-busqueda
+                margin-top 15px
+                .btn-bus
+                    border 1px solid
+                    border-radius 26px
+                    border-color rgba(121,121,121,.9)
+                    span
+                        font-size 15px
+                        color #c9c9c9
+                        opacity .5
+        .calendario
+            display flex
+            justify-content center
+            align-items center
+            width 1030px
+            height 100%
+            padding 10px
+        .panel-derecho
+            width 350px
+            .slider
+                height 200px
+                .carousel
+                    height 100%
+                    .slick-list
+                        height 100%
+                        .slick-track
+                            height 100%
+                    button.slick-prev
+                        left inherit !important
+                        right 75%
+                        z-index 1
+                        top 11%
+                        width 100px
+                        height 100px
+                        &:before
+                            font-family inherit
+                            content '‹'
+                            font-size 60px
+                            color black
+                    button.slick-next
+                        right inherit !important
+                        left 75%
+                        top 11%
+                        width 100px
+                        height 100px
+                        &:before
+                            font-family inherit
+                            content '›'
+                            font-size 60px
+                            color black
+                    .slide
+                        &:focus
+                            outline 0px
+                        .contenedor-slider
+                            height 200px
+                            .arriba
+                                background-color #ffffff
+                                height 50px
+                                display flex
+                                justify-content center
+                                align-items center
+                                p
+                                    margin 0
+                                    font-size 22px
+                                    font-weight 100
+                            .abajo
+                                display flex
+                                justify-content center
+                                align-items center
+                                background-color #f2f2f2
+                                height 150px
+                                .nombre-eventoSlider
+                                    width 90%
+                                    p
+                                        font-size 17px
+                                        font-weight 100
+                                        opacity 0.3
+                                        margin 0
+                                        text-align center
+            .proximos
+                margin-top 20px
+                .titulo
+                    width 100%
+                    display flex
+                    flex-direction column
+                    justify-content center
+                    align-items center
+                    h3
+                        margin 0
+                        font-size 17px
+                        opacity 0.4
+                        font-weight 100
+                        margin-bottom 10px
+                    h2
+                        margin 0
+                        font-size 18px
+                        font-weight 100
+                        margin-bottom 20px
+                .nombre-evento
+                    display flex
+                    flex-direction row
+                    justify-content center
+                    align-items center
+                    height 68px
+                    background-color  #8bc24a
+                    h1
+                        font-size 16px
+                        color white
+                        font-weight 100
+                        margin 0
+                        padding 2px                    
+                .informacion-evento
+                    display flex
+                    flex-direction row
+                    justify-content center
+                    align-items center
+                    .info-basica
+                        .nombre
+                            margin-bottom 10px
+                            p
+                                margin 0
+                                font-size 12px
+                                opacity 0.6
+                        .hora
+                            display flex
+                            flex-direction row
+                            justify-content flex-start
+                            align-items center
+                            margin-bottom 10px
+                            p
+                                margin 0
+                                font-size 12px
+                                opacity 0.6
+                        .ubicacion
+                            display flex
+                            flex-direction row
+                            justify-content flex-start
+                            margin-bottom 10px
+                            p
+                                margin 0
+                                font-size 12px
+                                opacity 0.6
+                        .saber-mas
+                            display flex
+                            flex-direction row
+                            justify-content flex-start
+                            align-items center
+                            p
+                                margin 0
+                                font-size 12px
+                                opacity 0.6
+                    .imagen
+                        width 150px
+                        height 180px
+                        background-color black
+
+.fc-day-grid-event
+    .fc-time
+        display none
+
+.fc-content
+    text-overflow ellipsis
+    white-space nowrap
+    overflow hidden
+    .verde
+        background-color green
+
+

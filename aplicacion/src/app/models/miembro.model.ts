@@ -10,6 +10,8 @@ export class Miembro {
     categoria: any;
     portada: any;
     eventos: any;
+    idCategoria: number;
+    activo: string;
     
     constructor(arg){
         this.id = arg.id;
@@ -17,13 +19,18 @@ export class Miembro {
         this.fecha= arg.fecha;
         this.descripcion = arg.descripcion;
         this.categoria = this.categorias();
+        this.idCategoria = arg.idCategoria;
+        this.activo = arg.activo;
         this.portada = this.cargarPortada();
         this.eventos = this.cargarEventos();
     }
 
     categorias(){
          MiembrosService.obtenercategorias(this.id)
-        .then(response =>  this.categoria = response.data[0].Categoria.nombre + " - " + response.data[0].nombre)
+        .then(response =>  {
+            this.idCategoria = response.data[0].Categoria.id
+            this.categoria = response.data[0].Categoria.nombre + " - " + response.data[0].nombre
+        })
     }
 
     get _id(): number {

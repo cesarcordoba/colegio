@@ -1,5 +1,6 @@
 const db = require('../relaciones');
-var { evento } = db;
+const _ = require('lodash')
+var { evento, categoria} = db;
 
 var ex = module.exports = {};
 
@@ -43,3 +44,56 @@ ex.obtenerMiembros = (req, res, next) => evento.findById(req.params.idEvento)
 ex.removerDeMiembro = (req, res, next) => evento.findById(req.params.idEvento)
     .then(evento => evento.removeMiembros(req.params.idMiembro))
     .then(response => res.status(200).json(response));
+
+
+ex.filtro = (req, res, next) => {
+
+    console.log(req.body)
+    ;(async function(){
+
+        var buscar = (array, id) =>  array.filter(n => n.IdCategoria === id).map(n => [  n.id, buscar(array, n.id) ])
+
+        var peticion = {
+            where : [],
+            include : []
+        }
+        
+        if(_.isNumber(req.body.peticion.categorias)){
+
+            await categoria.findAll()
+            .then(response => {
+                peticion.include.push(
+                    {
+                        model : categoria,
+                        as : 'Categorias',
+                        where : {
+                            id :  {  $or : _.flattenDeep([req.body.peticion.categorias, buscar(response, req.body.peticion.categorias)])   }    
+                        }
+                })
+            })
+
+        }
+
+
+        if(req.body.peticion.nombre.length > 0){
+            peticion.where.push({nombre: {$like: '%' + req.body.peticion.nombre + '%'}})
+        }
+    
+        await evento.findAndCountAll(peticion, {
+            include : [
+                { model : categoria,
+                    as : 'Categorias'
+                }
+            ]
+        })
+        .then(response => res.status(200).jsonp(
+            new Object({
+                peticion: peticion,
+                items: _.chunk(response.rows, req.body.limite)[req.body.pagina -1],
+                paginas: Math.ceil(response.count / req.body.limite)
+            })))
+
+
+    })()
+    
+};

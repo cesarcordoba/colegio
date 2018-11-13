@@ -44,3 +44,5 @@ var config = {
 // 		callbackURL: "http://127.0.0.1:5000/login/instagram/callback"
 // 	},
 // }
+
+module.exports = config;

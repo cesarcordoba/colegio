@@ -1,11 +1,9 @@
+import { EventosService } from './../../../services/eventos.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-//import {TweenLite} from "gsap";
-//import * as $ from 'jquery';
 import { Router } from '@angular/router';
-
-
-
-
+import { Evento } from '../../../models/evento.model';
+import { Noticia } from '../../../models/noticia.model';
+import { NoticiasService } from '../../../services/noticias.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +12,10 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit {
-
+    eventos: Evento[] = []
+    noticias: Noticia[] = []
+    correo : {nombre: ''}
+    valor: number  = 1
     slides = [{}];
     slideConfig = {};
     slidesNoticias = [{}];
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
     slidesVivos = [{}];
     novedades = [{}];
     slideConfigNovedades = {};
+
   constructor(private router: Router) { }
     cargarDatos(){
         this.slides = [
@@ -41,18 +43,6 @@ export class HomeComponent implements OnInit {
             {img: "http://placehold.it/350x150/000000"}
         ];
 
-        this.slidesGrids = [
-
-            {img: "http://placehold.it/350x150/333333", introduccion:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-            {img: "http://placehold.it/350x150/000000",  introduccion:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-            {img: "http://placehold.it/350x150/666666",  introduccion:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-            {img: "http://placehold.it/350x150/111111",  introduccion:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-            {img: "http://placehold.it/350x150/333333", introduccion:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-            {img: "http://placehold.it/350x150/000000",  introduccion:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-            {img: "http://placehold.it/350x150/666666",  introduccion:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-            {img: "http://placehold.it/350x150/111111",  introduccion:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
-
-        ];
         this.slidesVivos = [
 
             {introduccion:"Transmisiones en Vivo 1."},
@@ -64,24 +54,64 @@ export class HomeComponent implements OnInit {
         ];
         this.novedades = [
 
-            {nombre:"Novedad 1", img: "http://placehold.it/350x150/000000", fecha:"14 Agosto 1993"},
-            {nombre:"Novedad 2", img: "http://placehold.it/350x150/111111", fecha:"15 Agosto 1994"},
-            {nombre:"Novedad 3", img: "http://placehold.it/350x150/333333", fecha:"16 Agosto 1995"},
-            {nombre:"Novedad 4", img: "http://placehold.it/350x150/666666", fecha:"17 Agosto 1996"},
-            {nombre:"Novedad 1", img: "http://placehold.it/350x150/000000", fecha:"14 Agosto 1993"},
-            {nombre:"Novedad 2", img: "http://placehold.it/350x150/111111", fecha:"15 Agosto 1994"},
-            {nombre:"Novedad 3", img: "http://placehold.it/350x150/333333", fecha:"16 Agosto 1995"},
-            {nombre:"Novedad 4", img: "http://placehold.it/350x150/666666", fecha:"17 Agosto 1996"}
+            {nombre:"Sintoniza desde donde estes las transmisiones de los eventos del colegio nacional", img: "assets/images/novedades.png", fecha:"14 Agosto 1993"},
+            {nombre:"Sintoniza desde donde estes las transmisiones de los eventos del colegio nacional", img: "assets/images/novedades.png", fecha:"15 Agosto 1994"},
+            {nombre:"Sintoniza desde donde estes las transmisiones de los eventos del colegio nacional", img: "assets/images/novedades.png", fecha:"16 Agosto 1995"},
+            {nombre:"Sintoniza desde donde estes las transmisiones de los eventos del colegio nacional", img: "assets/images/novedades.png", fecha:"17 Agosto 1996"},
+            {nombre:"Sintoniza desde donde estes las transmisiones de los eventos del colegio nacional", img: "assets/images/novedades.png", fecha:"14 Agosto 1993"},
+            {nombre:"Sintoniza desde donde estes las transmisiones de los eventos del colegio nacional", img: "assets/images/novedades.png", fecha:"15 Agosto 1994"}
         ];
 
+        
+
+    }
+    submit(dato){
+        console.log(dato)
+        console.log("si hay click")
     }
 
+    cambiar(dato){
+        switch(dato) { 
+            case 1: {
+                this.valor = 1
+               break; 
+            } 
+            case 2: {
+                this.valor = 2
+               break; 
+            }
+            case 3: {
+                this.valor = 3
+                break; 
+             } 
+         } 
+   
+    }
+
+    mandarEvento(id){
+        this.router.navigate(['/eventos/' + id]);
+    }
+    
   ngOnInit() {
         this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
         this.slideConfigNoticias = {"slidesToShow": 1, "slidesToScroll": 1};
         this.slideConfigGrid = {"slidesToShow": 4, "slidesToScroll": 1};
         this.slideConfigNovedades = {"slidesToShow": 3, "slidesToScroll": 1};
         this.cargarDatos();
+
+        EventosService.obtener()
+        .then(response => {
+            var algo = response.data.map(n => new Evento(n))
+
+            Promise.all(
+                algo.map( async (evento) => await evento.categorias())
+              )
+            .then(() => this.eventos = algo)
+        
+        })
+        
+        NoticiasService.obtener()
+        .then(response => this.noticias = response.data.map(n => new Noticia(n)))
 
   }
 

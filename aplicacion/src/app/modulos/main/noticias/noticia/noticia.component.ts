@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Noticia } from '../../../../models/noticia.model';
 import { NoticiasService } from '../../../../services/noticias.service';
@@ -6,7 +6,8 @@ import { NoticiasService } from '../../../../services/noticias.service';
 @Component({
   selector: 'noticia',
   templateUrl: './noticia.component.pug',
-  styleUrls: ['./noticia.component.styl']
+  styleUrls: ['./noticia.component.styl'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class NoticiaComponent implements OnInit {

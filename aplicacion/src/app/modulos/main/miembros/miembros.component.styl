@@ -1,4 +1,5 @@
 @import "/../../../../default.styl";
+letras = #c9c9c9
 
 .linea-filtros
     background-color #505050
@@ -20,17 +21,101 @@
             background-color #333333
             width 342px
             padding 8px
+            .encabezado
+                h1
+                    color letras
+                    font-size 26px
+                    font-weight 100
+                    margin 0
+                    margin-top 20px
+                    margin-bottom 10px
+                h4
+                    color letras
+                    font-weight 100
+                    margin 0
+                    margin-top 10px
             .alfabetico
+                h4
+                    color letras
+                    margin 0
+                    margin-top 15px
+                    margin-bottom 15px
                 .boton-todo
                     margin-right 8px
+                    span
+                        color letras
+                        opacity 0.5
+                .boton-letra
+                    span
+                        color letras
+                        opacity 0.5
                 .mat-button
                     min-width inherit !important
                     line-height inherit !important
                     padding 0 4px !important
+            .categorias
+                h4
+                    font-size 15px
+                    color letras
+                .arriba-categorias
+                    display flex
+                    flex-direction row
+                    justify-content space-around
+                    align-items center
+                    .exactas, .artes
+                        display flex
+                        flex-direction column
+                        align-items center
+                        justify-content center
+                        width 50%
+                        cursor pointer
+                        p
+                            font-size 11px
+                            color letras
+                            text-align center
+                            font-weight 100
+                    .exactas
+                        border-right 1px solid rgba(121,121,121,.9)
+                        border-bottom 1px solid rgba(121,121,121,.9)
+                .abajo-categorias
+                    display flex
+                    flex-direction row
+                    justify-content center
+                    align-items center
+                    .ciencias-sociales, .ciencias-biologicas
+                        display flex
+                        flex-direction column
+                        align-items center
+                        justify-content space-around
+                        width 50%
+                        cursor pointer
+                        p
+                            font-size 11px
+                            color letras
+                            text-align center
+                            font-weight 100
+                    .ciencias-biologicas
+                        border-top 1px solid rgba(121,121,121,.9)
+                        border-left 1px solid rgba(121,121,121,.9)
             .lista
+                margin-top 20px
                 .mat-radio-group
                     display flex
                     flex-direction column
+                    .mat-radio-label-content
+                        color letras
+                        font-size 15px
+                        font-weight 100
+                .boton-busqueda-miembros
+                    margin-top 15px
+                    .btn-miembros
+                        border 1px solid
+                        border-radius 26px
+                        border-color rgba(121,121,121,.9)
+                        span
+                            font-size 15px
+                            color #c9c9c9
+                            opacity .5
         .regresar
             position absolute
             left 96%
@@ -40,22 +125,34 @@
             align-items center
             width 100%
             height 100%
+            flex-direction column
             .contenedor-grid
                 width 95%
                 height 95%
                 display grid
-                grid-template-columns repeat(5,1fr)
+                grid-template-columns repeat(4, 220px)
                 grid-column-gap 20px
                 grid-row-gap 15px
-                @media mediana 
-                    grid-template-columns repeat(3,1fr)
+                @media chica
+                    grid-template-columns repeat(3, 220px)
+                @media tablet
+                    grid-template-columns repeat(2, 220px)
+                @media mobile
+                    grid-template-columns repeat(1, 220px)
                 .miembros-repeat
                     display flex
                     justify-content center
                     align-items center
+                    overflow hidden
+                     box-shadow 2px 2px 5px 0px rgba(0,0,0,0.75)
                     .miembros
+                        transition(300ms, 0)
+                        cursor pointer
                         width 100%
                         height 100%
+                        border 1px solid
+                        &:hover
+                            transform scale(1.05)
                         .imagen
                             width 100%
                             height 271px
@@ -63,13 +160,28 @@
                             display flex
                             justify-content center
                             align-items center
-                        .linea-background
-                            width 100%
-                            background-color black
-                            height 2px
+                            img
+                                height 100%
+                                width 100%
                         .texto
                             height 128px
                             width 100%
-                            background-color darkgrey
+                            background-color white 
                             p
                                 margin 0
+                                color #757575
+                                font-size 13px
+                                text-align center
+                            h1
+                                margin 0
+                                font-size 15px
+                                text-align center
+                            .linea-background
+                                width 100%
+                                background-color #ff5353
+                                height 8px
+            .botones-paginacion
+                display flex
+                flex-direction row
+                justify-content center
+                align-items center

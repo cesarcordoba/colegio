@@ -1,0 +1,21 @@
+.evento-main-container
+    .evento-main-content
+        .evento
+            .titulo-evento-container
+                .titulo
+                    h1 {{evento.nombre}}
+                .icono
+                    img(src="assets/images/calendario.png")
+            .fecha
+                .circulo([style.backgroundColor]="evento.color")
+                p {{evento.fecha | date: 'mediumDate'}} - {{evento.hora}}
+            .linea
+            .ubicacion
+                mat-icon place
+                p {{evento.ubicacion}}
+            .descripcion-evento
+                p([innerHtml] = "evento.descripcion")
+        .portada
+            img([src]="evento?.portada[0].link")
+
+

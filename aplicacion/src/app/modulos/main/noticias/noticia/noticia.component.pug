@@ -1,24 +1,46 @@
 .noticia-main-container
     .noticia-main-content
         .contenedor-central
-            .header-contenedor
-                .etiqueta
-                    p {{noticia.tipo}}
-                    h1 {{noticia.nombre}}
-                    h3 {{noticia.introduccion}}
-                    p 22 agosto 2018
-                    p *iconos*
-                .cuerpo
+            .etiqueta([style.backgroundColor]="noticia.color")
+                p {{noticia.tipo}}
+            .cuerpo-container
+                .cuerpo-content
+                    .encabezado
+                        h1 {{noticia.nombre}}
+                        h3 {{noticia.introduccion}}
+                        .iconos
+                            img(src="assets/images/colnal_facebook.png")
+                            img(src="assets/images/colnal_twitter.png")
+                            img(src="assets/images/colnal_instagram.png")
+                            img(src="assets/images/colnal_youtube.png")
                     .imagen
+                        img([src]="noticia?.portada[0].link")
                     .descripcion
                         p([innerHtml] = "noticia.descripcion")
                     .contenedor-tags
                         p MAS SOBRE
                         .tags(*ngFor="let tag of noticia.tags")
-                            a(mat-button) {{tag.nombre}}
-                .boletin-semanal
-                    h2 BOLETIN SEMANAL
-                    P Suscribete a nuestro boletin de noticias sobre el colegio
-                    input(matInput placeholder="Escribe tu correo electronico")
-                    a(mat-button) SUSCRIBETE      
+                            a(mat-button style="min-width: inherit;line-height: 20px") {{tag.nombre}}
+                    .iconos
+                        img(src="assets/images/colnal_facebook.png")
+                        img(src="assets/images/colnal_twitter.png")
+                        img(src="assets/images/colnal_instagram.png")
+                        img(src="assets/images/colnal_youtube.png")
+                    .boletin-semanal-container
+                        .boletin-semanal-content
+                            h2 BOLETIN SEMANAL
+                            P Suscribete a nuestro boletin de noticias sobre el colegio
+                            input(matInput style="height: 30px;width: 352px;margin-top: 5px;" placeholder="Escribe tu correo electronico")
+                            a.btn-suscribir(mat-button) SUSCRIBETE      
         .contenedor-lateral
+            input(matInput style="height: 30px;width: 98%;margin-top: 5px;" placeholder="Encuentra la noticia")
+            mat-tab-group(dynamicHeight)
+                mat-tab(label="Institución")
+                    mat-card.intitucion-content
+                        h4 Institución
+                mat-tab(label="Actualidad")
+                    mat-card.actualidad-content
+                        h4 Actualidad
+                mat-tab(label="Prensa")
+                    mat-card.prensa-content
+                        h4 Prensa

@@ -56,5 +56,25 @@ export class NoticiasService {
         return axios.put(this.apiUrl + '/data/categorias/eliminarCategoriaNoticia/' +  idNoticia, data);
     }
 
+    static obtenerSoloInstituciones(){
+        return axios.get(this.apiUrl + '/data/obtenerSoloInstituciones');
+    }
+
+    static obtenerSoloActualidades(){
+        return axios.get(this.apiUrl + '/data/obtenerSoloActualidades');
+    }
+
+    static obtenerSoloPrensa(){
+        return axios.get(this.apiUrl + '/data/obtenerSoloPrensa');
+    }
+
+    static paginacion(items, pagina){
+        return axios.get(this.apiUrl + '/data/noticias/paginacion/' + items + '/' + pagina);
+    }
+
+    static filtro(peticion){
+        return axios.put(this.apiUrl + '/data/noticias/filtro', peticion);
+    }
+
 
 }

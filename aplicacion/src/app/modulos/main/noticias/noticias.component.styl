@@ -15,6 +15,8 @@ fondAbajo = #606060
         width 70vw
         display flex
         flex-direction column
+        justify-content center
+        align-items center
         .barra
             display flex
             flex-direction row
@@ -25,21 +27,54 @@ fondAbajo = #606060
                 background-color black
                 width 1px
         .grid-noticias
+            margin-top 2vh
             display grid
-            grid-template-columns 1fr 1fr 1fr
-            grid-column-gap 5px
-            grid-row-gap 5px
+            grid-template-columns repeat(3, 348px)
+            grid-column-gap 10px
+            grid-row-gap 10px
             .grid-item-noticia
                 position relative
                 .etiqueta
                     position absolute
+                    height 25px
+                    top 15px
+                    width 75px
+                    display flex
+                    justify-content center
+                    align-items center
                     p
                         color white
+                        font-size 13px
+                        margin 0
+                        font-weight 600
                 .imagen
                     background-color fondo
-                    height 180px
+                    height 205px
                     width 100%
+                    img
+                        width 100%
+                        height 100%
                 .texto
+                    padding 5px
+                    margin-top 5px
                     background-color fondAbajo
                     p
                         color white
+                        margin 0
+                        font-size 16px
+                        display -webkit-box
+                        -webkit-line-clamp 2
+                        -webkit-box-orient vertical
+                        overflow hidden
+                        text-overflow ellipsis
+                    a
+                        text-decoration underline
+                        text-decoration-color white
+                        span
+                            font-size 10px
+                            color white
+        .botones-paginacion
+            display flex
+            flex-direction row
+            justify-content center
+            align-items center
