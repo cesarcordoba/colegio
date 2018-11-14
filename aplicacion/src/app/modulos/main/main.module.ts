@@ -16,6 +16,7 @@ import { MainRoutingModule } from './main-routing.module';
 
 import { HomeComponent } from './home/home.component';
 import { InicioSesionComponent } from './home/sesion/sesion.component';
+import { BoletinComponent } from './home/boletin/boletin.component';
 import { ActualidadComponent } from './home/actualidad/actualidad.component';
 import { InstitucionesComponent } from './home/institucion/instituciones.component';
 import { PrensaComponent } from './home/prensa/prensa.component';
@@ -55,6 +56,7 @@ import { InstitucionComponent } from './institucion/institucion.component';
 		InstitucionesComponent,
 		PrensaComponent,
 		InicioSesionComponent,
+		BoletinComponent,
 		LoginComponent,
 		UsuarioComponent,
 		NoticiasComponent,
@@ -67,6 +69,7 @@ import { InstitucionComponent } from './institucion/institucion.component';
 	],
 	entryComponents: [
 		LoginComponent,
+		BoletinComponent,
 		InicioSesionComponent
 	]
 })

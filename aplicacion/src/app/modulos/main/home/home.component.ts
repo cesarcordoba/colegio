@@ -2,8 +2,10 @@ import { EventosService } from './../../../services/eventos.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Evento } from '../../../models/evento.model';
+import { MatDialog } from '@angular/material';
 import { Noticia } from '../../../models/noticia.model';
 import { NoticiasService } from '../../../services/noticias.service';
+import { BoletinComponent } from './boletin/boletin.component';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +18,7 @@ export class HomeComponent implements OnInit {
     noticias: Noticia[] = []
     correo : {nombre: ''}
     valor: number  = 1
+    muestra : boolean = true;
     slides = [{}];
     slideConfig = {};
     slidesNoticias = [{}];
@@ -26,7 +29,7 @@ export class HomeComponent implements OnInit {
     novedades = [{}];
     slideConfigNovedades = {};
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dialog: MatDialog) { }
     cargarDatos(){
         this.slides = [
             {img: "http://placehold.it/350x150/000000"},
@@ -91,6 +94,15 @@ export class HomeComponent implements OnInit {
     mandarEvento(id){
         this.router.navigate(['/eventos/' + id]);
     }
+
+    abrirBoletin(){
+		this.dialog.open(BoletinComponent ,{
+            width: '526px',
+            height: '130px'
+		}).afterClosed().subscribe(result => {
+			this.muestra = result
+		});
+	}
     
   ngOnInit() {
         this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};

@@ -4,9 +4,9 @@
             .slider
                 ngx-slick.carousel(#slickmodal='slick-modal', [config]='slideConfig', (afterchange)='afterChange($event)')
                     .slide(*ngFor='let evento of eventos' ngxSlickItem)
-                        //-img(src='{{ evento?.portada[0].link}}')
+                        img(src='{{ evento?.portada[0].link}}')
             .barrita-gris
-                button.boletin(mat-button) BOLETIN
+                button.boletin(mat-button (click)="abrirBoletin()") BOLETIN
                     mat-icon email
                 button.reco-virtual(mat-button) RECORRIDO VIRTUAL
             .home-content
@@ -28,11 +28,7 @@
                                             a.btn-nav(mat-button style="min-width: inherit;line-height: inherit;padding: inherit;") Prensa
                                     .busqueda-noticias
                                         mat-icon search
-                                        mat-form-field
-                                            input(matInput placeholder="Ingrese palabras claves" [matAutocomplete]="auto" [formControl]="filtroCtrl")
-                                            mat-autocomplete(#auto='matAutocomplete')
-                                                mat-option(*ngFor='let item of filteredItems | async', [value]='item.nombre' (click)="eventClick(item)")
-                                                    span {{ item.nombre }}
+                                        autocomplete
                                 .info-noticias
                                     instituciones(*ngIf="valor===1")
                                     actualidad(*ngIf="valor===2")

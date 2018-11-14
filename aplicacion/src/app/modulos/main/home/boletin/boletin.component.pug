@@ -1,0 +1,11 @@
+form(class="contenedor" [formGroup]="boletinForm" (ngSubmit)="mandarBoletin(boletinForm)" novalidate)
+    mat-dialog-content.contenido-mdDialog-boletin
+        .boletin
+            h3 BOLETIN SEMANAL
+            p Suscribete a nuestro boletin de noticias sobre el colegio
+            .boletin-formulario
+                mat-form-field(class="input-layout")
+                    input(matInput formControlName="correo" placeholder="Escribe tu correo electronico" autocomplete="off" required)
+                button.btn-dialog(mat-button type="submit") SUSCRIBETE
+    .cerrar-boletin((click)="cancel()")
+        mat-icon clear

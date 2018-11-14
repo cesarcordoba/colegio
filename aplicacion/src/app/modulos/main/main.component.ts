@@ -84,9 +84,9 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 	abrirSesion(){
 		this.dialog.open(InicioSesionComponent ,{
             width: '455px',
-            height: '222px'
+            height: '223px'
 		}).afterClosed().subscribe(result => {
-			this.muestra = result
+			this.muestra = true
 			console.log(this.muestra)
 		});
 	}
