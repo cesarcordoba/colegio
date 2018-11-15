@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { AuthService } from '../../../../services/auth.service';
@@ -6,7 +6,8 @@ import { AuthService } from '../../../../services/auth.service';
 @Component({
     selector: 'sesion',
     templateUrl: './sesion.component.pug',
-    styleUrls: ['./sesion.component.styl']
+    styleUrls: ['./sesion.component.styl'],
+    encapsulation: ViewEncapsulation.None,
 })
 
 export class InicioSesionComponent implements OnInit {
